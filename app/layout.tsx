@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Novanop",
+  title: "Novanop | Nova Nurhamdani Portfolio Website",
   description: "Nova Nurhamdani Portfolio Website",
 };
 

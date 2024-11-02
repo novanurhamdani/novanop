@@ -1,9 +1,13 @@
 "use client";
 
-import MaintenanceMode from "@/components/maintenance";
 import { ProjectCard } from "@/components/project-card";
 import { Sidebar } from "@/components/sidebar";
-import { useState } from "react";
+import { useMaintenanceMode } from "@/hooks/use-maintenance-mode";
+import dynamic from "next/dynamic";
+
+const MaintenanceMode = dynamic(() => import("@/components/maintenance"), {
+  ssr: false,
+});
 
 const projects = [
   {
@@ -24,11 +28,17 @@ const projects = [
 ];
 
 export default function Home() {
-  const [maintenanceMode, setMaintenanceMode] = useState(true);
+  const { isMaintenance, isClient } = useMaintenanceMode();
 
-  return maintenanceMode ? (
-    <MaintenanceMode />
-  ) : (
+  if (!isClient) {
+    return null;
+  }
+
+  if (isMaintenance) {
+    return <MaintenanceMode />;
+  }
+
+  return (
     <div className="flex min-h-screen bg-background">
       <Sidebar />
       <main className="ml-64 flex-1 p-8">
