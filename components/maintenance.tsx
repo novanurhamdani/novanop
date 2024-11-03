@@ -1,6 +1,6 @@
 "use client";
 
-import { Wrench, Github, Linkedin, Mail, Divide } from "lucide-react";
+import { Wrench, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 
 export default function MaintenanceMode() {

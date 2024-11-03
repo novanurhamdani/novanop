@@ -2,7 +2,7 @@
 
 import { CVContent } from "@/components/cv-content";
 import { ProjectCard } from "@/components/project-card";
-import { Sidebar } from "@/components/sidebar";
+import { TopNav } from "@/components/top-nav";
 import { useMaintenanceMode } from "@/hooks/use-maintenance-mode";
 import dynamic from "next/dynamic";
 import { useState } from "react";
@@ -42,14 +42,14 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar
+    <div className="min-h-screen bg-background">
+      <TopNav
         activeSection={activeSection}
         setActiveSection={setActiveSection}
       />
-      <main className="ml-64 flex-1 p-8">
+      <main className="container mx-auto px-4 py-6 pt-24 sm:px-6 lg:px-8">
         {activeSection === "projects" ? (
-          <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <ProjectCard key={index} {...project} />
             ))}
