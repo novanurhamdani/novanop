@@ -19,7 +19,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-6 py-8">
       {/* Back Button */}
       <Link
         href="/?section=projects"
@@ -67,7 +67,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
       {/* Description */}
       <div className="mb-8">
         <h2 className="mb-4 text-xl font-semibold">Description</h2>
-        <div className="prose prose-gray max-w-none dark:prose-invert">
+        <div className="prose prose-gray max-w-none dark:prose-invert text-muted-foreground">
           {project.description.split("\n").map((paragraph, index) =>
             paragraph.trim() ? (
               <p key={index} className="mb-4">
@@ -115,12 +115,12 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
       )}
 
       {/* Action Buttons */}
-      <div className="flex gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         {project.liveDemo && (
           <Link
             href={project.liveDemo}
             target="_blank"
-            className="flex items-center gap-2 rounded-lg bg-primary px-6 py-2 text-primary-foreground hover:bg-primary/90"
+            className="flex justify-center items-center gap-2 rounded-lg bg-primary px-6 py-2 text-primary-foreground hover:bg-primary/90"
           >
             <Globe className="w-4 h-4" />
             View Live Demo
@@ -130,7 +130,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
           <Link
             href={project.githubRepo}
             target="_blank"
-            className="flex items-center gap-2 rounded-lg bg-secondary px-6 py-2 text-secondary-foreground hover:bg-secondary/90"
+            className="flex justify-center items-center gap-2 rounded-lg bg-secondary px-6 py-2 text-secondary-foreground hover:bg-secondary/90"
           >
             <Github className="w-4 h-4" />
             View Source Code

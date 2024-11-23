@@ -10,9 +10,9 @@ export const projects: Project[] = [
     description: `The AI-powered document assistant for students, researchers, and professionals. Scan, query, and explore PDFs effortlessly to uncover insights, streamline research, and boost productivity:
 
 1. Document Upload and Scanning
-- File Types Supported: PDF (initially), with future support for Word documents and other file formats.
+- File Types Supported: PDF Document.
 - Upload Methods: Local file upload, drag-and-drop, and integration with cloud storage (AWS S3).
-- File Size Limit: Up to 10 MB for initial MVP.
+- File Size Limit: Up to 10 MB.
 
 2. AI-Driven Document Chat Interface
 - Natural Language Processing (NLP): Allows users to ask questions in natural language.
@@ -44,8 +44,8 @@ export const projects: Project[] = [
       },
     ],
     demoVideo: "https://www.youtube.com/embed/demo-video-id",
-    liveDemo: "https://fos.hijra.bank",
-    githubRepo: "https://github.com/hijrabank/fos",
+    liveDemo: "https://cumentor.novanop.com",
+    githubRepo: "https://github.com/novanurhamdani/cumentor",
     images: [
       "/projects/fos/dashboard.png",
       "/projects/fos/muap-form.png",
@@ -97,8 +97,8 @@ The app has successfully simplified the home-buying journey for our customers, m
       },
     ],
     demoVideo: "https://www.youtube.com/embed/demo-video-id-2",
-    liveDemo: "https://play.google.com/store/apps/hijrahome",
-    githubRepo: "https://github.com/hijrabank/hijra-home",
+    liveDemo: "https://cumentor.novanop.com",
+    githubRepo: "https://github.com/novanurhamdani/cumentor",
     images: [
       "/projects/hijra-home/home.png",
       "/projects/hijra-home/search.png",
