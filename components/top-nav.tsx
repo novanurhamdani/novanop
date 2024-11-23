@@ -16,8 +16,8 @@ export function TopNav({ activeSection, setActiveSection }: TopNavProps) {
   const { theme, setTheme } = useTheme();
 
   const menuItems = [
-    { id: "projects", icon: FolderKanban, label: "Projects" },
     { id: "cv", icon: FileText, label: "CV" },
+    { id: "projects", icon: FolderKanban, label: "Projects" },
   ];
 
   return (

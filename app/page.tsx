@@ -13,9 +13,16 @@ const MaintenanceMode = dynamic(() => import("@/components/maintenance"), {
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    type: "Full Stack E-commerce",
-    techStack: ["Next.js", "Node.js", "MongoDB", "Stripe"],
+    title: "Cumentor AI",
+    type: "Chat with PDF Documents",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Gemini AI",
+      "Stripe",
+      "PostgreSQL",
+      "AWS S3",
+    ],
   },
   {
     title: "Portfolio Website",
@@ -31,7 +38,7 @@ const projects = [
 
 export default function Home() {
   const { isMaintenance, isClient } = useMaintenanceMode();
-  const [activeSection, setActiveSection] = useState("projects");
+  const [activeSection, setActiveSection] = useState("cv");
 
   if (!isClient) {
     return null;
