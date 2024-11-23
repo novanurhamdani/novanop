@@ -14,13 +14,12 @@ export default function Home() {
         </p>
         <p className="text-gray-600 mb-6">
           I'm working on some exciting updates to showcase my latest projects
-          and skills. The site will be back up and running by{" "}
-          <b>November 24th, 2024</b>. In the meantime, feel free to check out my
-          work or get in touch through the links below.
+          and skills. The site will be back up and running soon. In the
+          meantime, feel free to check out my work or get in touch through the
+          links below.
         </p>
         <p className="text-gray-600 mb-6">
-          Thank you for your patience and understanding. I can't wait to show
-          you what I've been working on!
+          I can't wait to show you what I've been working on!
         </p>
         <div className="flex justify-center space-x-6 mb-8">
           <Link
