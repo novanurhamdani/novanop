@@ -4,41 +4,26 @@ import { CVContent } from "@/components/cv-content";
 import { ProjectCard } from "@/components/project-card";
 import { TopNav } from "@/components/top-nav";
 import { useMaintenanceMode } from "@/hooks/use-maintenance-mode";
+import { projects } from "@/constants/projects";
+import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const MaintenanceMode = dynamic(() => import("@/components/maintenance"), {
   ssr: false,
 });
 
-const projects = [
-  {
-    title: "Cumentor AI",
-    type: "Chat with PDF Documents",
-    techStack: [
-      "Next.js",
-      "TypeScript",
-      "Gemini AI",
-      "Stripe",
-      "PostgreSQL",
-      "AWS S3",
-    ],
-  },
-  {
-    title: "Portfolio Website",
-    type: "Landing Page",
-    techStack: ["React", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    title: "Task Management App",
-    type: "Web Application",
-    techStack: ["Vue.js", "Firebase", "Tailwind CSS"],
-  },
-];
-
 export default function Home() {
   const { isMaintenance, isClient } = useMaintenanceMode();
+  const searchParams = useSearchParams();
   const [activeSection, setActiveSection] = useState("cv");
+
+  useEffect(() => {
+    const section = searchParams.get("section");
+    if (section) {
+      setActiveSection(section);
+    }
+  }, [searchParams]);
 
   if (!isClient) {
     return null;
@@ -58,7 +43,7 @@ export default function Home() {
         {activeSection === "projects" ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
+              <ProjectCard key={index} project={project} />
             ))}
           </div>
         ) : (
