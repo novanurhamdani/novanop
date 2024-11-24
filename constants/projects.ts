@@ -5,9 +5,10 @@ export const projects: Project[] = [
     id: "cumentor-ai",
     title: "Cumentor AI",
     type: "Chat with PDF",
-    logo: "/projects/hijra-bank.png",
-    summary: "The AI-powered chat with PDF document assistant",
-    description: `The AI-powered document assistant for students, researchers, and professionals. Scan, query, and explore PDFs effortlessly to uncover insights, streamline research, and boost productivity:
+    logo: "/projects/cumentor/cumentor-logo.png",
+    summary:
+      "The AI-powered document assistant for students, researchers, and professionals. Scan, query, and explore PDFs effortlessly to uncover insights, streamline research, and boost productivity",
+    description: `The AI-powered document assistant for students, researchers, and professionals. Scan, query, and explore PDFs effortlessly to uncover insights, streamline research, and boost productivity.
 
 1. Document Upload and Scanning
 - File Types Supported: PDF Document.
