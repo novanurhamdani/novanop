@@ -1,16 +1,10 @@
-import localFont from "next/font/local";
+import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  variable: '--font-fira-code',
 });
 
 export const metadata = {
@@ -18,7 +12,7 @@ export const metadata = {
   description: "Nova Nurhamdani Portfolio Website",
 };
 
-export default function RootLayoutt({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -26,7 +20,7 @@ export default function RootLayoutt({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}
+        className={`${firaCode.variable} min-h-screen antialiased font-mono`}
       >
         <ThemeProvider
           attribute="class"
