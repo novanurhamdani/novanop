@@ -12,7 +12,7 @@ export function CVContent() {
         <div className="mt-4 flex flex-wrap gap-4 text-sm text-muted-foreground">
           <p>📧 nova.nurhamdani@gmail.com</p>
           <p>📱 +62 896 8311 6161</p>
-          <p>📍 Jakarta, Indonesia</p>
+          <p>📍 Bogor, Indonesia</p>
         </div>
       </div>
 
@@ -20,17 +20,16 @@ export function CVContent() {
       <section>
         <h2 className="mb-4 text-2xl font-semibold">Professional Summary</h2>
         <p className="text-muted-foreground text-justify">
-          I am a self-taught Software Engineer based in Indonesia who focuses on
-          JavaScript using React.js and Next.js libraries/frameworks. With 4+
-          years of experience in web development, I specialize in
-          JavaScript/TypeScript, React.js, Next.js, and Node.js.
+          Enthusiastic Associate Frontend Engineer with 3+ years of experience,
+          particularly in Javascript and Typescript. Passionate about clean code
+          and best practices, I take pride in creating seamless, visually
+          appealing, and highly functional digital experiences.
           <br />
-          <br />I am passionate about creating efficient and scalable solutions
-          while maintaining clean code practices. I enjoy being challenged and
-          engaging with projects that require me to work outside my comfort and
-          knowledge set, as learning new languages and development techniques is
-          important to me. I am always open to learning new things and
-          continually strive to improve my skills and deliver high-quality work.
+          <br />I enjoy being challenged and engaging with projects that require
+          me to work outside my comfort and knowledge set, as learning new
+          languages and development techniques is important to me. I am always
+          open to learning new things and continually strive to improve my
+          skills and deliver high-quality work.
         </p>
       </section>
 
@@ -38,42 +37,35 @@ export function CVContent() {
       <section>
         <h2 className="mb-4 text-2xl font-semibold">Technical Skills</h2>
         <div className="space-y-6">
-          {/* Frontend Skills */}
+          {/* Programming Languages */}
           <div>
-            <h3 className="mb-2 text-md font-medium">Frontend Development</h3>
+            <h3 className="mb-2 text-md font-medium">Programming Languages</h3>
+            <div className="flex flex-wrap gap-2">
+              {["HTML", "CSS", "JavaScript", "TypeScript", "PHP"].map(
+                (skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full bg-primary px-3 py-1 text-xs text-primary-foreground"
+                  >
+                    {skill}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+
+          {/* Framework Skills */}
+          <div>
+            <h3 className="mb-2 text-md font-medium">Framework</h3>
             <div className="flex flex-wrap gap-2">
               {[
                 "React.js",
                 "Next.js",
-                "TypeScript",
-                "JavaScript",
-                "HTML",
-                "CSS",
-                "Tailwind CSS",
                 "React Native",
-                "Sass",
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full bg-primary px-3 py-1 text-xs text-primary-foreground"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Backend Skills */}
-          <div>
-            <h3 className="mb-2 text-md font-medium">Backend Development</h3>
-            <div className="flex flex-wrap gap-2">
-              {[
                 "Node.js",
                 "Express.js",
-                "PostgreSQL",
-                "MongoDB",
-                "Firebase",
-                "MySQL",
+                "Tailwind",
+                "Mantine UI",
               ].map((skill) => (
                 <span
                   key={skill}
@@ -85,17 +77,26 @@ export function CVContent() {
             </div>
           </div>
 
-          {/* Tools & Others */}
+          {/* Developer Tools */}
           <div>
-            <h3 className="mb-2 text-md font-medium">Tools & Other Skills</h3>
+            <h3 className="mb-2 text-md font-medium">Developer Tools</h3>
             <div className="flex flex-wrap gap-2">
-              {[
-                "Git",
-                "Figma",
-                "Adobe Photoshop",
-                "Adobe Illustrator",
-                "WordPress",
-              ].map((skill) => (
+              {["Git", "Docker", "AWS", "Cypress", "MongoDB"].map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full bg-primary px-3 py-1 text-xs text-primary-foreground"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Software */}
+          <div>
+            <h3 className="mb-2 text-md font-medium">Software</h3>
+            <div className="flex flex-wrap gap-2">
+              {["Jira", "Confluence", "Figma", "WordPress"].map((skill) => (
                 <span
                   key={skill}
                   className="rounded-full bg-primary px-3 py-1 text-xs text-primary-foreground"
@@ -131,12 +132,41 @@ export function CVContent() {
                 <p className="text-sm text-muted-foreground/80 mt-1">
                   {experience.period}
                 </p>
-                <p className="mt-4 text-sm text-muted-foreground whitespace-pre-line">
-                  {experience.description}
-                </p>
+                <div
+                  className="mt-4 text-sm text-muted-foreground [&_ul]:list-disc [&>ol]:list-decimal [&_ul]:ml-4 [&>ol]:ml-4 [&_li]:mt-1"
+                  dangerouslySetInnerHTML={{ __html: experience.description }}
+                />
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Education */}
+      <section>
+        <h2 className="mb-4 text-2xl font-semibold">Education</h2>
+        <div className="space-y-6">
+          <div className="group relative overflow-hidden rounded-xl backdrop-blur-md bg-background/30 border border-muted/30 p-6 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1 w-full">
+            {/* Glassmorphism effect overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-background/5 opacity-50" />
+
+            {/* Content */}
+            <div className="relative">
+              <h3 className="text-xl font-medium text-primary">
+                Bachelor of Science in Computer Science
+              </h3>
+              <p className="text-muted-foreground mt-1 font-medium">
+                University of the People
+              </p>
+              <p className="text-sm text-muted-foreground/80 mt-1">
+                Expected Graduation: 2028
+              </p>
+              <div className="mt-4 text-sm text-muted-foreground space-y-2">
+                <p>Currently studying</p>
+                <p>Current GPA: 3.84</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
