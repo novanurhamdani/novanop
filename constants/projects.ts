@@ -44,7 +44,7 @@ export const projects: Project[] = [
         icon: "",
       },
     ],
-    demoVideo: "https://www.youtube.com/embed/demo-video-id",
+    demoVideo: "",
     liveDemo: "https://cumentor.novanop.com",
     githubRepo: "https://github.com/novanurhamdani/cumentor",
     images: [
