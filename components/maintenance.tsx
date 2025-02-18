@@ -1,7 +1,9 @@
+"use client";
+
 import { Wrench, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 
-export default function Home() {
+export default function MaintenanceMode() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white flex flex-col items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-xl p-8 max-w-2xl w-full text-center">
