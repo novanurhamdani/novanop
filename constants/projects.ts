@@ -48,116 +48,47 @@ export const projects: Project[] = [
     liveDemo: "https://cumentor.novanop.com",
     githubRepo: "https://github.com/novanurhamdani/cumentor",
     images: [
-      "/projects/fos/dashboard.png",
-      "/projects/fos/muap-form.png",
-      "/projects/fos/risk-review.png",
-      "/projects/fos/documents.png",
+      "/projects/cumentor/cumentor 1.png",
+      "/projects/cumentor/cumentor 2.png",
+      "/projects/cumentor/cumentor 3.png",
     ],
   },
   {
-    id: "hijra-home",
-    title: "Hijra Home",
-    type: "Mobile Application",
-    logo: "/projects/hijra-home.png",
+    id: "nadhira-store",
+    title: "Nadhira Store",
+    type: "WordPress Web Store",
+    logo: "/projects/nadhira/nadhira-logo.png",
     summary:
-      "A mobile app feature for streamlined house financing and property search.",
-    description: `Hijra Home is a comprehensive mobile app feature designed to revolutionize the house financing experience. Key features include:
+      "A WordPress-powered Muslim fashion store with custom functionalities, including pre-orders and flexible payment terms.",
+    description: `A feature-rich Muslim fashion store built on WordPress, designed to enhance the shopping experience for agents and resellers. Key functionalities include:
 
-1. Property Search
-- Advanced search filters
-- Virtual property tours
-- Saved searches and favorites
+1. Pre-Order & Flexible Payment Terms – Allowing customers to reserve products in advance with tailored payment options.
+2. Automated Reward Points System – Automatically calculates reward points based on total purchases, encouraging customer loyalty.
+3. Advanced Order Management – Streamlining order processing for better efficiency and customer experience.
 
-2. Financing Calculator
-- Real-time payment calculations
-- Various financing schemes
-- Customizable down payment options
 
-3. Document Upload
-- Digital document submission
-- Progress tracking
-- Secure storage
-
-The app has successfully simplified the home-buying journey for our customers, making it more accessible and user-friendly.`,
+This web app has significantly improved accessibility and usability, simplifying the customer journey for agents and resellers.`,
     techStack: [
       {
-        name: "React Native",
+        name: "PHP",
         icon: "/tech/react-native.svg",
       },
       {
-        name: "TypeScript",
+        name: "WordPress",
         icon: "/tech/typescript.svg",
       },
       {
-        name: "Firebase",
+        name: "Elementor",
         icon: "/tech/firebase.svg",
       },
       {
-        name: "Node.js",
+        name: "MySQL",
         icon: "/tech/nodejs.svg",
       },
     ],
-    demoVideo: "https://www.youtube.com/embed/demo-video-id-2",
-    liveDemo: "https://cumentor.novanop.com",
-    githubRepo: "https://github.com/novanurhamdani/cumentor",
-    images: [
-      "/projects/hijra-home/home.png",
-      "/projects/hijra-home/search.png",
-      "/projects/hijra-home/calculator.png",
-      "/projects/hijra-home/documents.png",
-    ],
-  },
-  {
-    id: "crypto-exchange",
-    title: "Cindrum Exchange",
-    type: "Web Platform",
-    logo: "/projects/cindrum.png",
-    summary:
-      "A cryptocurrency exchange platform with integrated wallet functionality.",
-    description: `Cindrum Exchange is a comprehensive cryptocurrency trading platform that combines advanced trading features with a secure wallet system. Key features include:
-
-1. Trading Interface
-- Real-time price charts
-- Multiple order types
-- Advanced trading tools
-
-2. Wallet Integration
-- Multi-currency support
-- Secure storage
-- Easy transfers
-
-3. Security Features
-- Two-factor authentication
-- Cold storage
-- Regular security audits
-
-The platform provides a seamless trading experience while maintaining high security standards for users' assets.`,
-    techStack: [
-      {
-        name: "Vue.js",
-        icon: "/tech/vue.svg",
-      },
-      {
-        name: "JavaScript",
-        icon: "/tech/javascript.svg",
-      },
-      {
-        name: "Node.js",
-        icon: "/tech/nodejs.svg",
-      },
-      {
-        name: "MongoDB",
-        icon: "/tech/mongodb.svg",
-      },
-    ],
-    demoVideo: "https://www.youtube.com/embed/demo-video-id-3",
-    liveDemo: "https://exchange.cindrum.com",
-    githubRepo: "https://github.com/cindrum/exchange",
-    images: [
-      "/projects/cindrum/trading.png",
-      "/projects/cindrum/wallet.png",
-      "/projects/cindrum/dashboard.png",
-      "/projects/cindrum/settings.png",
-    ],
+    demoVideo: "",
+    liveDemo: "https://nadhirastore.com",
+    githubRepo: "",
+    images: [],
   },
 ];

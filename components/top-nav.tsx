@@ -41,7 +41,7 @@ export function TopNav({ activeSection, setActiveSection }: TopNavProps) {
               <h1 className="text-lg font-bold">Nova Nurhamdani</h1>
               <div className="flex items-center gap-1 text-sm text-muted-foreground">
                 <User2 className="h-3 w-3" />
-                <span>Software Engineer</span>
+                <span>Frontend Engineer</span>
               </div>
             </div>
           </div>

@@ -8,7 +8,7 @@ export function CVContent() {
       {/* Header Section */}
       <div className="border-b pb-8">
         <h1 className="mb-4 text-4xl font-bold">Nova Nurhamdani</h1>
-        <p className="text-xl text-muted-foreground">Software Engineer</p>
+        <p className="text-xl text-muted-foreground">Frontend Engineer</p>
         <div className="mt-4 flex flex-wrap gap-4 text-sm text-muted-foreground">
           <p>📧 nova.nurhamdani@gmail.com</p>
           <p>📱 +62 896 8311 6161</p>
@@ -165,6 +165,16 @@ export function CVContent() {
                 <p>Currently studying</p>
                 <p>Current GPA: 3.84</p>
               </div>
+            </div>
+
+            <div className="relative mt-4">
+              <h3 className="text-xl font-medium text-primary">
+                Web Development Bootcamp
+              </h3>
+              <p className="text-muted-foreground mt-1 font-medium">
+                FreeCodeCamp.org
+              </p>
+              <p className="text-sm text-muted-foreground/80 mt-1">2021</p>
             </div>
           </div>
         </div>
