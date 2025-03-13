@@ -68,17 +68,17 @@ export function AboutSection() {
           <div className="w-24 h-1 bg-hot-pink mx-auto mb-8"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
           {/* Photo with retro frame */}
-          <div className="flex justify-center md:justify-end">
+          <div className="flex justify-center">
             <div className="relative">
-              <div className="absolute inset-0 border-4 border-hot-pink neon-border-pink transform rotate-3"></div>
-              <div className="relative w-64 h-64 overflow-hidden border-4 border-hot-pink transform -rotate-3">
+              <div className="absolute inset-0 border-4 border-hot-pink rounded-full neon-border-pink transform rotate-3"></div>
+              <div className="relative w-64 h-64 overflow-hidden border-4 border-hot-pink rounded-full transform -rotate-3">
                 <Image
-                  src="/profile-photo.jpg"
+                  src="/pas-photo.png"
                   alt="Nova Nurhamdani"
                   fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="object-cover transition-all duration-500"
                 />
               </div>
             </div>
