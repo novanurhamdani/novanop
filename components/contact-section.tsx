@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 
 export function ContactSection() {
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,7 +17,7 @@ export function ContactSection() {
   >("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -25,10 +27,14 @@ export function ContactSection() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      // In a real application, you would send this data to your backend
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Using FormSubmit service to send emails without a backend
+      const form = e.target as HTMLFormElement;
+      await fetch("https://formsubmit.co/nova.nurhamdani@gmail.com", {
+        method: "POST",
+        body: new FormData(form),
+      });
+
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
@@ -47,10 +53,21 @@ export function ContactSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 neon-text-pink">
+          <h2
+            className={`text-2xl md:text-3xl font-bold mb-4 ${
+              theme === "dark" ? "neon-text-pink" : "text-primary"
+            }`}
+          >
             Contact Me
           </h2>
-          <div className="w-24 h-1 bg-hot-pink mx-auto mb-8"></div>
+          <div
+            className={`w-24 h-1 ${
+              theme === "dark" ? "bg-hot-pink" : "bg-primary"
+            } mx-auto mb-8`}
+          ></div>
+          <p className="text-lg max-w-2xl mx-auto">
+            Have a question or want to work together? Drop me a message!
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -211,7 +228,27 @@ export function ContactSection() {
               Send Me a Message
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4"
+              action="https://formsubmit.co/nova.nurhamdani@gmail.com"
+              method="POST"
+            >
+              {/* Hidden fields for FormSubmit configuration */}
+              <input
+                type="hidden"
+                name="_subject"
+                value="New message from Novanop website"
+              />
+              <input type="hidden" name="_captcha" value="false" />
+              <input
+                type="hidden"
+                name="_next"
+                value={
+                  typeof window !== "undefined" ? window.location.href : ""
+                }
+              />
+
               <div>
                 <label
                   htmlFor="name"
