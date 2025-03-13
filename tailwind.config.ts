@@ -60,7 +60,15 @@ const config: Config = {
           '3': 'hsl(var(--chart-3))',
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))'
-        }
+        },
+        // Retro colors
+        'electric-blue': 'var(--electric-blue)',
+        'hot-pink': 'var(--hot-pink)',
+        'bright-yellow': 'var(--bright-yellow)',
+        'neon-green': 'var(--neon-green)',
+        'cyber-purple': 'var(--cyber-purple)',
+        'red': 'var(--red)',
+        'purple': 'var(--purple)',
       },
       keyframes: {
         'accordion-down': {

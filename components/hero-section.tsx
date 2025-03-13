@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useTheme } from "next-themes";
 
 export function HeroSection() {
   const [glitchEffect, setGlitchEffect] = useState(false);
+  const { theme } = useTheme();
 
   // Create a glitch effect every few seconds
   useEffect(() => {
@@ -38,35 +39,20 @@ export function HeroSection() {
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
     >
       {/* Retro grid background */}
-      <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-[#1E1E1E] bg-[linear-gradient(to_right,rgba(0,255,255,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,255,255,0.2)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-      </div>
+      <div className="absolute inset-0 z-0 hero-grid-bg"></div>
 
       {/* Scanlines effect */}
       <div className="scanlines absolute inset-0 z-10 pointer-events-none"></div>
 
       <div className="container mx-auto px-4 z-20 text-center">
         <div className="max-w-3xl mx-auto">
-          {/* Pixelated avatar */}
-          <div className="relative w-32 h-32 mx-auto mb-6">
-            <Image
-              src="/avatar-pixel.png"
-              alt="Nova Nurhamdani"
-              width={128}
-              height={128}
-              className={`rounded-lg neon-border ${
-                glitchEffect ? "translate-x-1 scale-105" : ""
-              } transition-all duration-200`}
-            />
-          </div>
-
           {/* Name with neon effect */}
           <h1
-            className={`text-3xl md:text-5xl font-bold mb-4 neon-text ${
+            className={`text-xl md:text-5xl font-bold mb-4 neon-text ${
               glitchEffect ? "translate-x-1" : ""
             } transition-all duration-200`}
           >
-            Nova Nurhamdani
+            Hello, I am Nova
           </h1>
 
           {/* Title with different neon color */}
@@ -79,7 +65,11 @@ export function HeroSection() {
           </h2>
 
           {/* Tagline */}
-          <p className="text-lg md:text-xl mb-8 text-bright-yellow font-vt323">
+          <p
+            className={`text-lg md:text-xl mb-8 ${
+              theme === "dark" ? "text-bright-yellow" : "neon-text"
+            }  font-vt323`}
+          >
             Transforming Ideas into Interactive Realities
           </p>
 

@@ -64,10 +64,11 @@ export function RetroNavbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? theme === "dark"
-            ? "bg-background/90 backdrop-blur-sm border-b border-electric-blue"
+            ? "bg-background/90 backdrop-blur-sm border-b"
             : "bg-background/90 backdrop-blur-sm border-b border-primary"
           : "bg-transparent"
       }`}
+      style={isScrolled && theme === "dark" ? { borderColor: 'var(--electric-blue)' } : {}}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
@@ -88,12 +89,15 @@ export function RetroNavbar() {
             <div>
               <h1
                 className={`text-sm md:text-base ${
-                  theme === "dark" ? "neon-text" : "text-primary font-bold"
+                  theme === "dark" ? "" : "text-primary font-bold"
                 }`}
+                style={theme === "dark" ? {
+                  color: 'var(--electric-blue)',
+                  textShadow: '0 0 5px var(--electric-blue), 0 0 10px var(--electric-blue), 0 0 15px var(--electric-blue)'
+                } : {}}
               >
-                Nova Nurhamdani
+                novanop.com
               </h1>
-              <p className="text-xs text-primary">Frontend Engineer</p>
             </div>
           </div>
 
@@ -106,10 +110,14 @@ export function RetroNavbar() {
                 className={`px-3 py-2 text-sm transition-all ${
                   activeSection === item.id
                     ? theme === "dark"
-                      ? "neon-text font-bold"
+                      ? "font-bold"
                       : "text-primary font-bold"
                     : "hover:text-primary"
                 }`}
+                style={activeSection === item.id && theme === "dark" ? {
+                  color: 'var(--electric-blue)',
+                  textShadow: '0 0 5px var(--electric-blue), 0 0 10px var(--electric-blue), 0 0 15px var(--electric-blue)'
+                } : {}}
               >
                 <span className="relative">
                   {item.label}
@@ -172,10 +180,14 @@ export function RetroNavbar() {
                 className={`px-3 py-2 text-sm transition-all ${
                   activeSection === item.id
                     ? theme === "dark"
-                      ? "neon-text font-bold"
+                      ? "font-bold"
                       : "text-primary font-bold"
                     : "hover:text-primary"
                 }`}
+                style={activeSection === item.id && theme === "dark" ? {
+                  color: 'var(--electric-blue)',
+                  textShadow: '0 0 5px var(--electric-blue), 0 0 10px var(--electric-blue), 0 0 15px var(--electric-blue)'
+                } : {}}
               >
                 <span className="relative">
                   {item.label}

@@ -43,9 +43,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
       {/* Retro grid background with different color */}
-      <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-[#1E1E1E] bg-[linear-gradient(to_right,rgba(255,0,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,0,255,0.1)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-      </div>
+      <div className="absolute inset-0 z-0 contact-grid-bg"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
@@ -289,9 +287,6 @@ export function ContactSection() {
                 </div>
               )}
             </form>
-
-            {/* Pixelated decoration */}
-            <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-hot-pink transform rotate-45"></div>
           </div>
         </div>
       </div>
