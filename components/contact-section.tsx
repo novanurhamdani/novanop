@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, ChangeEvent } from "react";
+import { useState, FormEvent, ChangeEvent, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
@@ -28,23 +28,41 @@ export function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      // Using FormSubmit service to send emails without a backend
       const form = e.target as HTMLFormElement;
-      await fetch("https://formsubmit.co/nova.nurhamdani@gmail.com", {
-        method: "POST",
-        body: new FormData(form),
-      });
 
+      // Set a success flag in localStorage before submission
+      localStorage.setItem("form_submitted", "true");
+
+      // Submit the form naturally - this will redirect the page
+      form.submit();
+
+      // The code below won't execute due to the redirect, but will keep it
+      // as a fallback in case the form submission is handled differently
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
-      // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus("idle"), 5000);
     }
   };
+
+  useEffect(() => {
+    const checkFormSubmission = () => {
+      const formSubmitted = localStorage.getItem("form_submitted");
+      if (formSubmitted === "true") {
+        // Clear the flag
+        localStorage.removeItem("form_submitted");
+        // Set success status
+        setSubmitStatus("success");
+        // Reset form
+        setFormData({ name: "", email: "", message: "" });
+      }
+    };
+
+    checkFormSubmission();
+  }, []);
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">

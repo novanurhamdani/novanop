@@ -34,7 +34,7 @@ export function PortfolioSection() {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`group relative border-2 bg-background/50 p-6 transition-all duration-300 ${
+              className={`group relative border-2 bg-background/50 p-6 transition-all duration-300 flex flex-col ${
                 theme === "dark"
                   ? "border-bright-yellow hover:neon-border-yellow"
                   : "border-primary hover:border-electric-blue"
@@ -55,15 +55,17 @@ export function PortfolioSection() {
                   />
                 </div>
                 <div>
-                  <h3
-                    className={`text-lg font-bold transition-all duration-300 hover:cursor-pointer ${
-                      theme === "dark"
-                        ? "group-hover:text-bright-yellow"
-                        : "group-hover:text-electric-blue"
-                    }`}
-                  >
-                    {project.title}
-                  </h3>
+                  <Link href={`/portfolio/${project.id}`}>
+                    <h3
+                      className={`text-lg font-bold transition-all duration-300 hover:cursor-pointer ${
+                        theme === "dark"
+                          ? "group-hover:text-bright-yellow"
+                          : "group-hover:text-electric-blue"
+                      }`}
+                    >
+                      {project.title}
+                    </h3>
+                  </Link>
                   <p className="text-xs text-bright-yellow/70">
                     {project.type}
                   </p>
@@ -109,7 +111,15 @@ export function PortfolioSection() {
               </div>
 
               {/* Links */}
-              <div className="flex gap-3 mt-4">
+              <div className="flex gap-3 mt-auto pt-4">
+                <Link
+                  href={`/portfolio/${project.id}`}
+                  className={`text-xs px-3 py-1 ${
+                    theme === "dark" ? "retro-btn-yellow" : "retro-btn"
+                  }`}
+                >
+                  View Details
+                </Link>
                 {project.liveDemo && (
                   <Link
                     href={project.liveDemo}
