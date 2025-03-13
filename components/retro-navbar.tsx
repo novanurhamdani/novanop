@@ -62,7 +62,11 @@ export function RetroNavbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/90 backdrop-blur-sm" : "bg-transparent"
+        isScrolled
+          ? theme === "dark"
+            ? "bg-background/90 backdrop-blur-sm border-b border-electric-blue"
+            : "bg-background/90 backdrop-blur-sm border-b border-primary"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 py-4">
@@ -82,7 +86,11 @@ export function RetroNavbar() {
               />
             </div>
             <div>
-              <h1 className="text-sm md:text-base neon-text">
+              <h1
+                className={`text-sm md:text-base ${
+                  theme === "dark" ? "neon-text" : "text-primary font-bold"
+                }`}
+              >
                 Nova Nurhamdani
               </h1>
               <p className="text-xs text-primary">Frontend Engineer</p>
@@ -97,11 +105,22 @@ export function RetroNavbar() {
                 onClick={() => scrollToSection(item.id)}
                 className={`px-3 py-2 text-sm transition-all ${
                   activeSection === item.id
-                    ? "neon-text font-bold"
+                    ? theme === "dark"
+                      ? "neon-text font-bold"
+                      : "text-primary font-bold"
                     : "hover:text-primary"
                 }`}
               >
-                {item.label}
+                <span className="relative">
+                  {item.label}
+                  {activeSection === item.id && (
+                    <span
+                      className={`absolute -bottom-1 left-0 right-0 h-0.5 ${
+                        theme === "dark" ? "bg-electric-blue" : "bg-primary"
+                      }`}
+                    ></span>
+                  )}
+                </span>
               </button>
             ))}
             <ThemeToggle theme={theme} setTheme={setTheme} />
@@ -111,7 +130,11 @@ export function RetroNavbar() {
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle theme={theme} setTheme={setTheme} />
             <button
-              className="retro-btn px-2 py-1 text-xs"
+              className={`px-2 py-1 text-xs border-2 ${
+                theme === "dark"
+                  ? "border-electric-blue text-electric-blue"
+                  : "border-primary text-primary"
+              }`}
               onClick={() => {
                 const mobileNav = document.getElementById("mobile-nav");
                 if (mobileNav) {
@@ -128,7 +151,11 @@ export function RetroNavbar() {
       {/* Mobile Navigation Menu */}
       <div
         id="mobile-nav"
-        className="hidden md:hidden bg-background/95 backdrop-blur-sm"
+        className={`hidden md:hidden ${
+          theme === "dark"
+            ? "bg-background/95 backdrop-blur-sm border-b border-electric-blue"
+            : "bg-background/95 backdrop-blur-sm border-b border-primary"
+        }`}
       >
         <div className="container mx-auto px-4 py-4">
           <nav className="flex flex-col space-y-2">
@@ -144,11 +171,22 @@ export function RetroNavbar() {
                 }}
                 className={`px-3 py-2 text-sm transition-all ${
                   activeSection === item.id
-                    ? "neon-text font-bold"
+                    ? theme === "dark"
+                      ? "neon-text font-bold"
+                      : "text-primary font-bold"
                     : "hover:text-primary"
                 }`}
               >
-                {item.label}
+                <span className="relative">
+                  {item.label}
+                  {activeSection === item.id && (
+                    <span
+                      className={`absolute -bottom-1 left-0 right-0 h-0.5 ${
+                        theme === "dark" ? "bg-electric-blue" : "bg-primary"
+                      }`}
+                    ></span>
+                  )}
+                </span>
               </button>
             ))}
           </nav>
