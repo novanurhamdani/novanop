@@ -1,4 +1,4 @@
-import { Fira_Code } from "next/font/google";
+import { Fira_Code, Press_Start_2P, VT323 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
@@ -9,9 +9,21 @@ const firaCode = Fira_Code({
   variable: "--font-fira-code",
 });
 
+const pressStart2P = Press_Start_2P({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-press-start-2p",
+});
+
+const vt323 = VT323({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-vt323",
+});
+
 export const metadata = {
-  title: "Novanop | Nova Nurhamdani Portfolio Website",
-  description: "Nova Nurhamdani Portfolio Website",
+  title: "Nova Nurhamdani | Retro Portfolio",
+  description: "Nova Nurhamdani's Retro-Style Portfolio Website - Frontend Engineer",
 };
 
 export default function RootLayout({
@@ -22,11 +34,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${firaCode.variable} min-h-screen antialiased font-mono`}
+        className={`${firaCode.variable} ${pressStart2P.variable} ${vt323.variable} min-h-screen antialiased font-mono`}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

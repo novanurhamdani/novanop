@@ -1,13 +1,16 @@
 "use client";
 
-import { CVContent } from "@/components/cv-content";
-import { ProjectCard } from "@/components/project-card";
-import { TopNav } from "@/components/top-nav";
 import { useMaintenanceMode } from "@/hooks/use-maintenance-mode";
-import { projects } from "@/constants/projects";
-import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
+import { RetroNavbar } from "@/components/retro-navbar";
+import { HeroSection } from "@/components/hero-section";
+import { AboutSection } from "@/components/about-section";
+import { PortfolioSection } from "@/components/portfolio-section";
+import { ExperienceSection } from "@/components/experience-section";
+import { ContactSection } from "@/components/contact-section";
+import { Footer } from "@/components/footer";
+import { useTheme } from "next-themes";
 
 const MaintenanceMode = dynamic(() => import("@/components/maintenance"), {
   ssr: false,
@@ -15,15 +18,13 @@ const MaintenanceMode = dynamic(() => import("@/components/maintenance"), {
 
 export default function Home() {
   const { isMaintenance, isClient } = useMaintenanceMode();
-  const searchParams = useSearchParams();
-  const [activeSection, setActiveSection] = useState("cv");
+  const [mounted, setMounted] = useState(false);
+  const { theme } = useTheme();
 
+  // This effect ensures hydration is complete before rendering
   useEffect(() => {
-    const section = searchParams.get("section");
-    if (section) {
-      setActiveSection(section);
-    }
-  }, [searchParams]);
+    setMounted(true);
+  }, []);
 
   if (!isClient) {
     return null;
@@ -33,23 +34,20 @@ export default function Home() {
     return <MaintenanceMode />;
   }
 
+  // Add CRT effect to the entire page
   return (
-    <div className="min-h-screen bg-background">
-      <TopNav
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-      />
-      <main className="container mx-auto px-4 py-6 pt-24 sm:px-6 lg:px-8">
-        {activeSection === "projects" ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))}
-          </div>
-        ) : (
-          <CVContent />
-        )}
+    <div className={`crt min-h-screen bg-background text-foreground ${theme === 'light' ? 'light-theme' : 'dark-theme'}`}>
+      <RetroNavbar />
+
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <PortfolioSection />
+        <ExperienceSection />
+        <ContactSection />
       </main>
+
+      <Footer />
     </div>
   );
 }

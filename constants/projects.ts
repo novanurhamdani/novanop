@@ -52,6 +52,32 @@ export const projects: Project[] = [
       "/projects/cumentor/cumentor 2.png",
       "/projects/cumentor/cumentor 3.png",
     ],
+    keyFeatures: [
+      "AI-powered PDF analysis and question answering",
+      "Natural language conversation with documents",
+      "Secure document storage with AWS S3 integration",
+      "Multi-document support for comprehensive research",
+      "Responsive design for desktop and mobile use",
+    ],
+    challenges: [
+      {
+        challenge:
+          "Processing large PDF files efficiently while maintaining performance",
+        solution:
+          "Implemented chunking strategies to break documents into manageable segments and utilized worker threads for background processing",
+      },
+      {
+        challenge: "Ensuring accurate AI responses based on document content",
+        solution:
+          "Developed a custom context retrieval system that provides the most relevant document sections to the AI model",
+      },
+      {
+        challenge:
+          "Creating a seamless user experience across different devices",
+        solution:
+          "Designed a responsive UI with Tailwind CSS and optimized loading states to provide feedback during processing",
+      },
+    ],
   },
   {
     id: "nadhira-store",
@@ -62,33 +88,83 @@ export const projects: Project[] = [
       "A WordPress-powered Muslim fashion store with custom functionalities, including pre-orders and flexible payment terms.",
     description: `A feature-rich Muslim fashion store built on WordPress, designed to enhance the shopping experience for agents and resellers. Key functionalities include:
 
-1. Pre-Order & Flexible Payment Terms – Allowing customers to reserve products in advance with tailored payment options.
-2. Automated Reward Points System – Automatically calculates reward points based on total purchases, encouraging customer loyalty.
-3. Advanced Order Management – Streamlining order processing for better efficiency and customer experience.
+1. Pre-Order & Flexible Payment Terms
+- Allowing customers to reserve products in advance with tailored payment options
+- Custom payment scheduling for agents with different credit terms
+- Automated reminders for payment due dates
 
+2. Automated Reward Points System
+- Automatically calculates reward points based on total purchases
+- Tiered rewards system for different customer levels
+- Points redemption for discounts on future purchases
 
-This web app has significantly improved accessibility and usability, simplifying the customer journey for agents and resellers.`,
+3. Advanced Order Management
+- Streamlined order processing workflow for administrators
+- Batch processing capabilities for high-volume order periods
+- Custom status tracking for pre-orders, partial payments, and shipments
+
+This web app has significantly improved accessibility and usability, simplifying the customer journey for agents and resellers while providing powerful management tools for the store administrators.`,
     techStack: [
       {
         name: "PHP",
-        icon: "/tech/react-native.svg",
+        icon: "php",
       },
       {
         name: "WordPress",
-        icon: "/tech/typescript.svg",
+        icon: "wordpress",
       },
       {
         name: "Elementor",
-        icon: "/tech/firebase.svg",
+        icon: "",
       },
       {
         name: "MySQL",
-        icon: "/tech/nodejs.svg",
+        icon: "mysql",
+      },
+      {
+        name: "WooCommerce",
+        icon: "woocommerce",
+      },
+      {
+        name: "jQuery",
+        icon: "jquery",
       },
     ],
     demoVideo: "",
     liveDemo: "https://nadhirastore.com",
     githubRepo: "",
-    images: [],
+    images: [
+      "/projects/nadhira/nadhira-1.png",
+      "/projects/nadhira/nadhira-2.png",
+      "/projects/nadhira/nadhira-3.png",
+    ],
+    keyFeatures: [
+      "Custom pre-order system with flexible payment terms",
+      "Automated reward points calculation and redemption",
+      "Advanced order management for administrators",
+      "Mobile-responsive design for on-the-go purchasing",
+      "Integration with multiple payment gateways",
+      "Custom reporting dashboard for sales analytics",
+    ],
+    challenges: [
+      {
+        challenge:
+          "Implementing a flexible pre-order system within WooCommerce's constraints",
+        solution:
+          "Developed custom plugins that extend WooCommerce's core functionality to support pre-orders with partial payments and scheduled installments",
+      },
+      {
+        challenge:
+          "Creating a reward system that automatically calculates points based on complex business rules",
+        solution:
+          "Built a custom points calculation engine that integrates with the order processing workflow and applies business-specific rules for different customer tiers",
+      },
+      {
+        challenge:
+          "Optimizing site performance while maintaining rich functionality",
+        solution:
+          "Implemented caching strategies, optimized database queries, and minimized plugin dependencies to ensure fast page load times even during high traffic periods",
+      },
+    ],
   },
 ];
