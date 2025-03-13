@@ -1,10 +1,12 @@
 import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/react";
+import GoogleAnalytics from "./google-analytics";
 
 const firaCode = Fira_Code({
-  subsets: ['latin'],
-  variable: '--font-fira-code',
+  subsets: ["latin"],
+  variable: "--font-fira-code",
 });
 
 export const metadata = {
@@ -30,6 +32,8 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   );
