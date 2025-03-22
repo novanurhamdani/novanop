@@ -9,7 +9,7 @@ export const experiences: Experience[] = [
   {
     title: "Frontend Engineer",
     company: "Hijra Bank",
-    period: "May 2022 - Present",
+    period: "May 2022 - Feb 2025",
     description: `<ol>
       <li>As a Frontend Engineer at Hijra Bank, I am currently focusing on exciting projects to enhance our financing processes:
         <ul>

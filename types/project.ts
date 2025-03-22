@@ -13,4 +13,9 @@ export interface Project {
   liveDemo?: string;
   githubRepo?: string;
   images: string[];
+  keyFeatures?: string[];
+  challenges?: {
+    challenge: string;
+    solution: string;
+  }[];
 }
