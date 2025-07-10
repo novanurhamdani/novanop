@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Work_Sans } from "next/font/google";
+import { Montserrat, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -8,8 +8,8 @@ const montserrat = Montserrat({
   weight: ["700", "900"],
 });
 
-const workSans = Work_Sans({
-  variable: "--font-work-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
@@ -26,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${montserrat.variable} ${workSans.variable} antialiased bg-background text-foreground font-sans`}
+        className={`${montserrat.variable} ${spaceGrotesk.variable} antialiased font-sans bg-background text-foreground`}
       >
         {children}
       </body>

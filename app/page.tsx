@@ -92,9 +92,9 @@ export default function Home() {
             {/* Hero Section */}
             <Section
               id="hero"
-              className="min-h-[calc(100vh-6rem)] flex items-center reveal"
+              className="min-h-[calc(100vh-6rem)] flex flex-col md:flex-row items-center justify-between reveal"
             >
-              <div className="w-full text-center md:text-left">
+              <div className="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
                 <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-black uppercase">
                   <span className="text-primary">The Code</span>
                   <span className="block">Alchemist</span>
@@ -105,10 +105,22 @@ export default function Home() {
                 </p>
                 <a
                   href="#about"
-                  className="mt-8 inline-block bg-purple-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-primary transform hover:-translate-y-1 transition-all duration-300"
+                  className="mt-8 inline-block bg-primary text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-purple-600 transform hover:-translate-y-1 transition-all duration-300"
                 >
                   Begin The Experiment
                 </a>
+              </div>
+
+              {/* Hero image */}
+              <div className="w-full md:w-1/2 flex justify-center">
+                <Image
+                  src="/images/dark-hero.png"
+                  alt="Code Alchemist hero illustration"
+                  width={500}
+                  height={500}
+                  className="max-w-full h-auto"
+                  priority
+                />
               </div>
             </Section>
 
@@ -120,13 +132,25 @@ export default function Home() {
             >
               <div className="grid md:grid-cols-3 gap-8 items-center">
                 <div className="md:col-span-1 flex justify-center">
-                  <div className="relative w-48 h-48 md:w-64 md:h-64">
-                    <Image
-                      src="https://placehold.co/250x250/1A0A33/A855F7?text=Avatar"
-                      alt="The Code Alchemist"
-                      fill
-                      className="rounded-full border-4 border-primary shadow-lg shadow-primary/20 object-cover"
-                    />
+                  <div className="relative w-48 h-48 md:w-64 md:h-64 profile-image-container">
+                    <div className="profile-image-inner">
+                      <div className="profile-image-front">
+                        <Image
+                          src="/images/photo.png"
+                          alt="The Code Alchemist"
+                          fill
+                          className="border-4 shadow-lg shadow-primary/20 object-cover scale-105"
+                        />
+                      </div>
+                      <div className="profile-image-back">
+                        <Image
+                          src="/images/photo-real.png"
+                          alt="The Real Me"
+                          fill
+                          className="border-4 shadow-lg shadow-primary/20 object-cover scale-105"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="md:col-span-2 text-foreground/90 space-y-4 text-lg">

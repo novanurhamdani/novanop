@@ -1,37 +1,75 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0F051D;
-  --foreground: #E0D8F0;
-  --card: #1A0A33;
-  --primary: #A855F7;
-  --secondary: #FBBF24;
-  --success: #22C55E;
-  --border: #392A54;
-}
+@theme {
+  --color-background: #0f051d;
+  --color-foreground: #e0d8f0;
+  --color-card: #1a0a33;
+  --color-primary: #a855f7;
+  --color-secondary: #fbbf24;
+  --color-success: #22c55e;
+  --color-border: #392a54;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-work-sans);
   --font-heading: var(--font-montserrat);
+  --font-sans: var(--font-space-grotesk);
 }
 
-/* Custom animations for notifications and scroll effects */
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(50px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Class added by Intersection Observer for scroll animations */
 .reveal {
   opacity: 0;
   transform: translateY(50px);
@@ -42,26 +80,34 @@
   transform: translateY(0);
 }
 
-/* Custom scrollbar for a more thematic feel */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0F051D;
-}
-::-webkit-scrollbar-thumb {
-  background: #392A54;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #A855F7;
+/* Profile image flip animation */
+.profile-image-container {
+  perspective: 1000px;
+  cursor: pointer;
 }
 
-html {
-  scroll-behavior: smooth;
+.profile-image-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+.profile-image-container:hover .profile-image-inner {
+  transform: rotateY(180deg);
+}
+
+.profile-image-front,
+.profile-image-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-image-back {
+  transform: rotateY(180deg);
 }

@@ -9,39 +9,41 @@ export default function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
   const [loadingText, setLoadingText] = useState("Initializing");
 
   useEffect(() => {
-    // Loading messages to display during progress
+    // Loading messages combining coding and alchemy themes
     const loadingMessages = [
-      "Initializing alchemy engine...",
-      "Brewing potions...",
-      "Gathering magical components...",
-      "Calibrating transmutation circles...",
-      "Summoning code spirits...",
-      "Unlocking arcane knowledge...",
-      "Almost ready...",
+      "Compiling magical algorithms...",
+      "Brewing code potions...",
+      "Initializing arcane functions...",
+      "Transmuting data structures...",
+      "Enchanting variables with logic...",
+      "Casting recursive spells..."
     ];
-    // Simulate loading with increasing progress
+    
+    // Fixed 3-second loading time
+    const totalDuration = 3000; // 3 seconds
+    const intervalTime = 100; // Update every 100ms
+    const steps = totalDuration / intervalTime;
+    const progressIncrement = 100 / steps;
+    
+    // Simulate loading with fixed progress increments
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
         // Update loading text at certain progress points
-        const newProgress = prevProgress + Math.random() * 3;
-        const messageIndex = Math.floor(
-          (newProgress / 100) * loadingMessages.length
-        );
-        setLoadingText(
-          loadingMessages[Math.min(messageIndex, loadingMessages.length - 1)]
-        );
-
+        const newProgress = prevProgress + progressIncrement;
+        const messageIndex = Math.floor((newProgress / 100) * loadingMessages.length);
+        setLoadingText(loadingMessages[Math.min(messageIndex, loadingMessages.length - 1)]);
+        
         if (newProgress >= 100) {
           clearInterval(interval);
           // Add a small delay before completing to show 100%
           setTimeout(() => {
             onLoadComplete();
-          }, 500);
+          }, 100);
           return 100;
         }
         return newProgress;
       });
-    }, 150);
+    }, intervalTime);
 
     return () => clearInterval(interval);
   }, [onLoadComplete]);
