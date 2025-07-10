@@ -48,7 +48,9 @@ export default function Section({
 
   return (
     <section id={id} ref={sectionRef} className={`py-20 reveal ${className}`}>
-      <h2 className="font-heading text-4xl text-center mb-12">{title}</h2>
+      <h2 className="font-heading font-bold text-4xl text-center mt-8 mb-12">
+        {title}
+      </h2>
       {children}
     </section>
   );

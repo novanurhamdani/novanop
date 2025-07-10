@@ -88,39 +88,104 @@ export default function Home() {
         <>
           <Navbar state={state} clickLogo={clickLogo} />
 
-          <main className="container mx-auto px-6 pt-24">
+          <main className="container mx-auto px-6">
             {/* Hero Section */}
             <Section
               id="hero"
-              className="min-h-[calc(100vh-6rem)] flex flex-col md:flex-row items-center justify-between reveal"
+              className="min-h-[calc(100vh-6rem)] relative reveal"
             >
-              <div className="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-                <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-black uppercase">
-                  <span className="text-primary">The Code</span>
-                  <span className="block">Alchemist</span>
-                </h1>
-                <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto md:mx-0 text-foreground/80">
-                  Transmuting ideas into powerful, interactive, and beautiful
-                  software.
-                </p>
-                <a
-                  href="#about"
-                  className="mt-8 inline-block bg-primary text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-purple-600 transform hover:-translate-y-1 transition-all duration-300"
-                >
-                  Begin The Experiment
-                </a>
+              {/* Alchemist-themed background */}
+              <div className="hero-background">
+                <div className="magic-circle magic-circle-1"></div>
+                <div className="magic-circle magic-circle-2"></div>
+                <div className="magic-circle magic-circle-3"></div>
+                <div className="magic-particles"></div>
+                <div className="magic-runes"></div>
+                <div className="alchemy-symbol alchemy-symbol-1"></div>
+                <div className="alchemy-symbol alchemy-symbol-2"></div>
+                <div className="alchemy-symbol alchemy-symbol-3"></div>
               </div>
 
-              {/* Hero image */}
-              <div className="w-full md:w-1/2 flex justify-center">
-                <Image
-                  src="/images/dark-hero.png"
-                  alt="Code Alchemist hero illustration"
-                  width={500}
-                  height={500}
-                  className="max-w-full h-auto"
-                  priority
-                />
+              <div
+                className="absolute w-full h-full overflow-visible pointer-events-none hidden xl:block mt-20"
+                style={{ zIndex: 5 }}
+              >
+                {/* Top left snippet */}
+                <div
+                  className="floating-snippet float-1"
+                  style={{ top: "2%", left: "5%", maxWidth: "220px" }}
+                >
+                  <div className="code-content">
+                    <span className="keyword">import</span> React{" "}
+                    <span className="keyword">from</span>{" "}
+                    <span className="string">&apos;react&apos;</span>;
+                  </div>
+                </div>
+
+                {/* Top right snippet */}
+                <div
+                  className="floating-snippet float-2"
+                  style={{ top: "2%", right: "22%", maxWidth: "280px" }}
+                >
+                  <div className="code-content">
+                    <span className="keyword">import</span> Image{" "}
+                    <span className="keyword">from</span> {"'"}
+                    <span className="string">@next/image</span>
+                    {"'"};
+                  </div>
+                </div>
+
+                {/* Bottom right snippet */}
+                <div
+                  className="floating-snippet float-3"
+                  style={{ bottom: "45%", right: "37%", maxWidth: "300px" }}
+                >
+                  <div className="code-content">
+                    <div>
+                      <span className="comment">{"// Magic happens here"}</span>
+                    </div>
+                    <div>
+                      <span className="keyword">export default</span>{" "}
+                      <span className="keyword">function</span> Alchemist(){" "}
+                      {"{"}
+                    </div>
+                    <div>
+                      &nbsp;&nbsp;<span className="keyword">return</span> magic;
+                    </div>
+                    <div>{"}"}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-center justify-between relative z-10 mt-40">
+                <div className="w-full md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+                  <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-black uppercase">
+                    <span className="text-primary">The Code</span>
+                    <span className="block">Alchemist</span>
+                  </h1>
+                  <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto md:mx-0 text-foreground/80">
+                    Transmuting ideas into powerful, interactive, and beautiful
+                    software.
+                  </p>
+                  <a
+                    href="#about"
+                    className="mt-8 inline-block bg-primary text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-purple-600 transform hover:-translate-y-1 transition-all duration-300"
+                  >
+                    Begin The Experiment
+                  </a>
+                </div>
+
+                {/* Hero image */}
+                <div className="w-full md:w-1/2 flex justify-center">
+                  <Image
+                    src="/images/dark-hero.png"
+                    alt="Code Alchemist hero illustration"
+                    width={500}
+                    height={500}
+                    className="max-w-full h-auto"
+                    priority
+                  />
+                </div>
               </div>
             </Section>
 
@@ -182,14 +247,41 @@ export default function Home() {
               title="The Potion Rack"
               onVisible={visitSection}
             >
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
-                {skillsData.map((skill, index) => (
-                  <SkillCard
-                    key={index}
-                    skill={skill}
-                    onClick={() => addXp(5, `click-skill-${index}`)}
-                  />
-                ))}
+              <div className="py-8">
+                {/* First row - left to right */}
+                <div className="skills-ticker mb-8">
+                  <div className="skills-row skills-row-1">
+                    {[...skillsData, ...skillsData]
+                      .slice(0, Math.ceil(skillsData.length * 1.5))
+                      .map((skill, index) => (
+                        <div
+                          key={`row1-${index}`}
+                          className="flex-shrink-0"
+                          onClick={() => addXp(5, `click-skill-${index}`)}
+                        >
+                          <SkillCard skill={skill} onClick={() => {}} />
+                        </div>
+                      ))}
+                  </div>
+                </div>
+
+                {/* Second row - right to left */}
+                <div className="skills-ticker">
+                  <div className="skills-row skills-row-2">
+                    {[...skillsData, ...skillsData]
+                      .slice(0, Math.ceil(skillsData.length * 1.5))
+                      .reverse()
+                      .map((skill, index) => (
+                        <div
+                          key={`row2-${index}`}
+                          className="flex-shrink-0"
+                          onClick={() => addXp(5, `click-skill-${index}`)}
+                        >
+                          <SkillCard skill={skill} onClick={() => {}} />
+                        </div>
+                      ))}
+                  </div>
+                </div>
               </div>
             </Section>
 
