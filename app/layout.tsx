@@ -1,29 +1,25 @@
-import { Fira_Code, Press_Start_2P, VT323 } from "next/font/google";
+import type { Metadata } from "next";
+import { Montserrat, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Analytics } from "@vercel/analytics/react";
-import GoogleAnalytics from "./google-analytics";
+import CustomCursor from "./components/layout/CustomCursor";
+import GoogleAnalytics from "./components/analytics/GoogleAnalytics";
 
-const firaCode = Fira_Code({
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-  variable: "--font-fira-code",
+  weight: ["700", "900"],
 });
 
-const pressStart2P = Press_Start_2P({
-  weight: "400",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  variable: "--font-press-start-2p",
+  weight: ["400", "500", "600"],
 });
 
-const vt323 = VT323({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-vt323",
-});
-
-export const metadata = {
-  title: "Nova Nurhamdani | Retro Portfolio",
-  description: "Nova Nurhamdani's Retro-Style Portfolio Website - Frontend Engineer",
+export const metadata: Metadata = {
+  title: "The Code Alchemist - Novanop | Gamified Developer Portfolio",
+  description:
+    "Transmuting ideas into powerful, interactive, and beautiful software.",
 };
 
 export default function RootLayout({
@@ -34,17 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${firaCode.variable} ${pressStart2P.variable} ${vt323.variable} min-h-screen antialiased font-mono`}
+        className={`${montserrat.variable} ${spaceGrotesk.variable} antialiased font-sans bg-background text-foreground`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-        <Analytics />
+        {children}
+        <CustomCursor />
         <GoogleAnalytics />
       </body>
     </html>
