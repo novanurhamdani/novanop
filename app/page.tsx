@@ -248,38 +248,23 @@ export default function Home() {
               onVisible={visitSection}
             >
               <div className="py-8">
-                {/* First row - left to right */}
                 <div className="skills-ticker mb-8">
                   <div className="skills-row skills-row-1">
-                    {[...skillsData, ...skillsData]
-                      .slice(0, Math.ceil(skillsData.length * 1.5))
-                      .map((skill, index) => (
+                    {[...skillsData, ...skillsData, ...skillsData].map(
+                      (skill, index) => (
                         <div
                           key={`row1-${index}`}
                           className="flex-shrink-0"
                           onClick={() => addXp(5, `click-skill-${index}`)}
                         >
-                          <SkillCard skill={skill} onClick={() => {}} />
+                          <SkillCard
+                            skill={skill}
+                            onClick={() => {}}
+                            blackAndWhite={true}
+                          />
                         </div>
-                      ))}
-                  </div>
-                </div>
-
-                {/* Second row - right to left */}
-                <div className="skills-ticker">
-                  <div className="skills-row skills-row-2">
-                    {[...skillsData, ...skillsData]
-                      .slice(0, Math.ceil(skillsData.length * 1.5))
-                      .reverse()
-                      .map((skill, index) => (
-                        <div
-                          key={`row2-${index}`}
-                          className="flex-shrink-0"
-                          onClick={() => addXp(5, `click-skill-${index}`)}
-                        >
-                          <SkillCard skill={skill} onClick={() => {}} />
-                        </div>
-                      ))}
+                      )
+                    )}
                   </div>
                 </div>
               </div>

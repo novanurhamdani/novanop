@@ -350,25 +350,27 @@ html {
 /* Skills ticker animation */
 .skills-ticker {
   display: flex;
+  flex-direction: column;
   overflow: hidden;
   position: relative;
   width: 100%;
+  background-color: rgba(15, 5, 29, 0.3);
+  border-radius: 8px;
+  padding: 1rem 0;
 }
 
 .skills-row {
   display: flex;
-  animation-duration: 30s;
+  animation-duration: 40s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  gap: 2rem;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  width: max-content;
 }
 
 .skills-row-1 {
   animation-name: tickerLeft;
-}
-
-.skills-row-2 {
-  animation-name: tickerRight;
 }
 
 @keyframes tickerLeft {
@@ -376,15 +378,16 @@ html {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% / 3));
   }
 }
 
-@keyframes tickerRight {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+/* Make skill items uniform in ticker */
+.skill-item {
+  background-color: var(--color-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
 }
