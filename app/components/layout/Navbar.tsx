@@ -27,7 +27,7 @@ export default function Navbar({ state, clickLogo }: NavbarProps) {
         scrolled ? "border-border/50" : "border-transparent"
       }`}
     >
-      <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
+      <nav className="container mx-auto px-6 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
         {/* Logo */}
         <Link
           href="#"
@@ -47,18 +47,18 @@ export default function Navbar({ state, clickLogo }: NavbarProps) {
         </Link>
 
         {/* XP Bar & Level */}
-        <div className="flex items-center space-x-4">
-          <span className="font-bold text-secondary text-sm">
+        <div className="flex items-center space-x-2 sm:space-x-4 w-full sm:w-auto justify-center">
+          <span className="font-bold text-secondary text-sm whitespace-nowrap">
             Lv. {state.level}
           </span>
-          <div className="w-32 md:w-48 h-4 bg-card border border-border rounded-full overflow-hidden">
+          <div className="w-24 sm:w-32 md:w-48 h-4 bg-card border border-border rounded-full overflow-hidden">
             <div
               className="h-full bg-orange-400 rounded-full transition-all duration-500"
               style={{ width: `${(state.xp / state.xpForNextLevel) * 100}%` }}
             ></div>
           </div>
-          <span className="text-xs font-mono w-20 text-right">
-            {state.xp} / {state.xpForNextLevel} XP
+          <span className="text-xs font-mono w-16 sm:w-20 text-right whitespace-nowrap">
+            {state.xp}/{state.xpForNextLevel}
           </span>
         </div>
       </nav>

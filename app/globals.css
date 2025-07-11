@@ -347,6 +347,20 @@ html {
   animation: float3 7s ease-in-out infinite;
 }
 
+.floating-hero-image {
+  animation: floatHero 6s ease-in-out infinite;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes floatHero {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
 /* Skills ticker animation */
 .skills-ticker {
   display: flex;
@@ -390,4 +404,224 @@ html {
   justify-content: center;
   width: 80px;
   height: 80px;
+}
+
+/* Experience Timeline Animation */
+.experience-timeline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  height: 100%;
+}
+
+.experience-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: var(--color-border);
+}
+
+.experience-fill-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+  animation: fillLine 2s ease-out forwards;
+  background-size: 200% 200%;
+  animation: fillLine 2s ease-out forwards, gradientFlow 4s ease infinite;
+}
+
+.experience-dot {
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulseDot 2s infinite;
+}
+
+.experience-dot-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid var(--color-background);
+}
+
+.experience-content {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+  animation-delay: calc(var(--index, 0) * 0.2s);
+}
+
+@keyframes fillLine {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(168, 85, 247, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading spinner for contact form */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid rgba(168, 85, 247, 0.2);
+  border-top-color: var(--color-primary);
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Experience description list styling */
+.experience-description ul, 
+.experience-description ol {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.experience-description ul {
+  list-style-type: disc;
+}
+
+.experience-description ol {
+  list-style-type: decimal;
+}
+
+.experience-description li {
+  margin-bottom: 0.25rem;
+}
+
+.experience-description ul ul,
+.experience-description ol ul {
+  list-style-type: circle;
+  margin-top: 0.25rem;
+}
+
+.experience-description ul ol,
+.experience-description ol ol {
+  list-style-type: lower-alpha;
+  margin-top: 0.25rem;
+}
+
+/* Custom Cursor Styles */
+html, body {
+  cursor: none;
+}
+
+a, button, input, textarea, select, [role="button"], label {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-20px, -20px); /* Offset to position the potion correctly */
+  transition: transform 0.1s ease;
+  opacity: 0;
+  will-change: transform;
+}
+
+.custom-cursor.visible {
+  opacity: 1;
+}
+
+.custom-cursor.hovering {
+  transform: translate(-20px, -20px) scale(1.2);
+}
+
+.potion-cursor {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.7));
+  transform-origin: center;
+  animation: slight-tilt 3s ease-in-out infinite alternate;
+}
+
+@keyframes slight-tilt {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+.bubble {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  animation: float 2s ease-out forwards;
+  opacity: 0.7;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -150%) scale(1.5);
+    opacity: 0;
+  }
 }

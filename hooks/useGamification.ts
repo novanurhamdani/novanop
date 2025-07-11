@@ -103,7 +103,7 @@ export const useGamification = () => {
   };
 
   // Track project views
-  const viewProject = (projectId: number) => {
+  const viewProject = (projectId: string) => {
     if (state.viewedProjects.includes(projectId)) return;
 
     setState((prevState) => ({
@@ -116,7 +116,7 @@ export const useGamification = () => {
   };
 
   // Track GitHub link clicks
-  const clickGithub = (projectId: number) => {
+  const clickGithub = (projectId: string) => {
     if (state.clickedGithubs.includes(projectId)) return;
 
     setState((prevState) => ({
@@ -137,49 +137,49 @@ export const useGamification = () => {
 
     if (state.logoClicks + 1 === 5) {
       addXp(75, "easter-egg-logo");
-      unlockBadge("Secret Seeker");
+      unlockBadge("Debug Master");
     }
   };
 
   // Check for achievements
   const checkAchievements = () => {
-    // Curious Explorer - visit all sections
+    // Full-Stack Navigator - visit all sections
     if (
       state.visitedSections.length >= 5 &&
-      !state.unlockedBadges.includes("Curious Explorer")
+      !state.unlockedBadges.includes("Full-Stack Navigator")
     ) {
-      unlockBadge("Curious Explorer");
+      unlockBadge("Full-Stack Navigator");
     }
 
-    // Project Inspector - view 3+ projects
+    // Code Reviewer - view 3+ projects
     if (
       state.viewedProjects.length >= 3 &&
-      !state.unlockedBadges.includes("Project Inspector")
+      !state.unlockedBadges.includes("Code Reviewer")
     ) {
-      unlockBadge("Project Inspector");
+      unlockBadge("Code Reviewer");
     }
 
-    // Master of Arts - view all projects
+    // Senior Developer - view all projects
     if (
       state.viewedProjects.length === projectsData.length &&
-      !state.unlockedBadges.includes("Master of Arts")
+      !state.unlockedBadges.includes("Senior Developer")
     ) {
-      unlockBadge("Master of Arts");
+      unlockBadge("Senior Developer");
     }
 
-    // Code Cartographer - click 2+ GitHub links
+    // Open Source Contributor - click 2+ GitHub links
     if (
       state.clickedGithubs.length >= 2 &&
-      !state.unlockedBadges.includes("Code Cartographer")
+      !state.unlockedBadges.includes("Open Source Contributor")
     ) {
-      unlockBadge("Code Cartographer");
+      unlockBadge("Open Source Contributor");
     }
   };
 
   // Submit contact form
   const submitContactForm = () => {
     addXp(100, "contact-submit");
-    unlockBadge("The Messenger");
+    unlockBadge("Pull Request Merged");
   };
 
   return {

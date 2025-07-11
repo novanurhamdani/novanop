@@ -4,7 +4,7 @@ import { Project } from "../../../../types";
 interface ProjectModalProps {
   project: Project | null;
   onClose: () => void;
-  onGithubClick: (projectId: number) => void;
+  onGithubClick: (projectId: string) => void;
 }
 
 export default function ProjectModal({
@@ -30,12 +30,14 @@ export default function ProjectModal({
           &times;
         </button>
 
-        <div className="relative w-full h-64 mb-6">
+        <div className="relative w-full mb-6">
           <Image
             src={project.image}
             alt={project.title}
-            fill
-            className="object-cover rounded-lg"
+            width={1200}
+            height={675}
+            className="w-full rounded-lg"
+            priority
           />
         </div>
 
@@ -59,23 +61,27 @@ export default function ProjectModal({
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 text-center bg-primary text-white font-bold py-3 px-6 rounded-full hover:bg-purple-500 transition-all duration-300"
+            className={`text-center bg-primary text-white font-bold py-3 px-6 rounded-full hover:bg-purple-500 transition-all duration-300 ${
+              !project.githubUrl ? "w-full" : "flex-1"
+            }`}
           >
             View Live Demo
           </a>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 text-center bg-card border-2 border-primary text-primary font-bold py-3 px-6 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
-            onClick={(e) => {
-              e.preventDefault();
-              onGithubClick(project.id);
-              window.open(project.githubUrl, "_blank");
-            }}
-          >
-            View on GitHub
-          </a>
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 text-center bg-card border-2 border-primary text-primary font-bold py-3 px-6 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                onGithubClick(project.id);
+                window.open(project.githubUrl, "_blank");
+              }}
+            >
+              View on GitHub
+            </a>
+          )}
         </div>
       </div>
     </div>

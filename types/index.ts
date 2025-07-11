@@ -7,7 +7,7 @@ export interface Skill {
 
 // Project type definition
 export interface Project {
-  id: number;
+  id: string;
   title: string;
   image: string;
   tagline: string;
@@ -41,7 +41,7 @@ export interface GamificationState {
   actionsTaken: Record<string, boolean>;
   unlockedBadges: string[];
   visitedSections: string[];
-  viewedProjects: number[];
-  clickedGithubs: number[];
+  viewedProjects: string[];
+  clickedGithubs: string[];
   logoClicks: number;
 }
