@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useGamification } from "../hooks/useGamification";
+import { useAnalytics } from "../hooks/useAnalytics";
 import {
   skillsData,
   projectsData,
@@ -27,6 +29,8 @@ import LoadingScreen from "./components/features/loading/LoadingScreen";
 export default function Home() {
   // Loading state
   const [isLoading, setIsLoading] = useState(true);
+  const pathname = usePathname();
+  const { trackPageView, trackEvent } = useAnalytics();
 
   // Gamification hook
   const {
@@ -52,6 +56,11 @@ export default function Home() {
     setIsLoading(false);
     // Award XP for completing the loading process
     addXp(10, "complete-loading");
+    // Track page view when site loads
+    trackPageView(
+      pathname,
+      "The Code Alchemist - Novanop | Gamified Developer Portfolio"
+    );
   };
 
   // Check for level up
@@ -59,18 +68,24 @@ export default function Home() {
     setCurrentLevel(state.level);
     setShowLevelUp(true);
     setTimeout(() => setShowLevelUp(false), 3000);
+    trackEvent("level_up", { level: state.level });
   }
 
   // Handle project click
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
     viewProject(project.id);
+    trackEvent("view_project", {
+      project_id: project.id,
+      project_title: project.title,
+    });
   };
 
   // Handle contact form submission
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     submitContactForm();
+    trackEvent("contact_form_submit", { source: "portfolio" });
 
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
@@ -480,8 +495,16 @@ export default function Home() {
           {selectedProject && (
             <ProjectModal
               project={selectedProject}
-              onClose={() => setSelectedProject(null)}
-              onGithubClick={clickGithub}
+              onClose={() => {
+                setSelectedProject(null);
+                trackEvent("close_project_modal", {
+                  project_id: selectedProject.id,
+                });
+              }}
+              onGithubClick={(id) => {
+                clickGithub(id);
+                trackEvent("click_github", { project_id: id });
+              }}
             />
           )}
 

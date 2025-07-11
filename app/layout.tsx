@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "./components/layout/CustomCursor";
+import GoogleAnalytics from "./components/analytics/GoogleAnalytics";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -33,6 +34,7 @@ export default function RootLayout({
       >
         {children}
         <CustomCursor />
+        <GoogleAnalytics />
       </body>
     </html>
   );

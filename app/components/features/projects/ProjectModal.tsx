@@ -57,16 +57,19 @@ export default function ProjectModal({
         <p className="text-foreground/90 mb-6">{project.description}</p>
 
         <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`text-center bg-primary text-white font-bold py-3 px-6 rounded-full hover:bg-purple-500 transition-all duration-300 ${
-              !project.githubUrl ? "w-full" : "flex-1"
-            }`}
-          >
-            View Live Demo
-          </a>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-center bg-primary text-white font-bold py-3 px-6 rounded-full hover:bg-purple-500 transition-all duration-300 ${
+                !project.githubUrl ? "w-full" : "flex-1"
+              }`}
+            >
+              View Live Demo
+            </a>
+          )}
+
           {project.githubUrl && (
             <a
               href={project.githubUrl}
