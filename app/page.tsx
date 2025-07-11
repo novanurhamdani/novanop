@@ -230,7 +230,7 @@ export default function Home() {
                       Ignite the Formula
                     </a>
                     <a
-                      href="/Resume Nova Nurhamdani.pdf"
+                      href="/Resume_Nova_Nurhamdani.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block bg-card border-2 border-primary text-primary font-bold py-3 px-8 rounded-full text-lg hover:bg-primary hover:text-white transform hover:-translate-y-1 transition-all duration-300"
