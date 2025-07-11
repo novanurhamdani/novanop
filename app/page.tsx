@@ -9,6 +9,7 @@ import {
   skillsData,
   projectsData,
   experienceData,
+  educationData,
   badgesData,
 } from "../lib/data";
 import { Project } from "../types";
@@ -23,6 +24,7 @@ import BadgeNotification from "./components/features/gamification/BadgeNotificat
 import BadgeDisplay from "./components/features/gamification/BadgeDisplay";
 import SkillCard from "./components/features/skills/SkillCard";
 import ExperienceItem from "./components/features/experience/ExperienceItem";
+import EducationItem from "./components/features/education/EducationItem";
 import LevelUpNotification from "./components/features/gamification/LevelUpNotification";
 import LoadingScreen from "./components/features/loading/LoadingScreen";
 
@@ -198,15 +200,12 @@ export default function Home() {
                 >
                   <div className="code-content">
                     <div>
-                      <span className="comment">{"// Magic happens here"}</span>
-                    </div>
-                    <div>
-                      <span className="keyword">export default</span>{" "}
-                      <span className="keyword">function</span> Alchemist(){" "}
+                      <span className="keyword">function</span> HelloWorld(){" "}
                       {"{"}
                     </div>
                     <div>
-                      &nbsp;&nbsp;<span className="keyword">return</span> magic;
+                      &nbsp;&nbsp;<span className="keyword">return</span>{" "}
+                      'Hello, I am Nova';
                     </div>
                     <div>{"}"}</div>
                   </div>
@@ -394,6 +393,25 @@ export default function Home() {
                         isLast={index === experienceData.length - 1}
                       />
                     </div>
+                  ))}
+                </div>
+              </div>
+            </Section>
+
+            {/* Education Section */}
+            <Section
+              id="education"
+              title="Academic Pursuits"
+              onVisible={visitSection}
+            >
+              <div className="relative max-w-2xl mx-auto">
+                <div className="education-timeline">
+                  <div className="education-line"></div>
+                  <div className="education-fill-line"></div>
+                </div>
+                <div className="pl-8">
+                  {educationData.map((edu, index) => (
+                    <EducationItem key={index} education={edu} />
                   ))}
                 </div>
               </div>

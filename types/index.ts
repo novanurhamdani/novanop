@@ -25,6 +25,15 @@ export interface Experience {
   description: string;
 }
 
+// Education type definition
+export interface Education {
+  degree: string;
+  institution: string;
+  graduationDate: string;
+  description: string;
+  gpa?: string; // Optional GPA
+}
+
 // Badge type definition
 export interface Badge {
   name: string;

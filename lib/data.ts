@@ -1,4 +1,4 @@
-import { Skill, Project, Experience, Badge } from "../types";
+import { Skill, Project, Experience, Education, Badge } from "../types";
 
 // Skills data
 export const skillsData: Skill[] = [
@@ -271,6 +271,17 @@ I also maintained and repaired facilities, equipment, and tools to achieve opera
     description: `Be part of a big project from the company. The company's clients are several government companies, such as Pos Indonesia, the Ministry of Finance (Kementrian Keuangan), National Agency of Drug and Food Control of Indonesia (Badan POM).
 
 Give an assist to the Senior Programmer to add some features to the project. Learn about HTML, CSS, PHP, JavaScript, and AJAX in this intern opportunity.`,
+  },
+];
+
+// Education data
+export const educationData: Education[] = [
+  {
+    degree: "Bachelor of Science in Computer Science",
+    institution: "University of the People",
+    graduationDate: "Expected Graduation: 2028",
+    description: "Currently pursuing a degree in Computer Science.",
+    gpa: "3.84",
   },
 ];
 
