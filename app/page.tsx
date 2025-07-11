@@ -205,7 +205,7 @@ export default function Home() {
                     </div>
                     <div>
                       &nbsp;&nbsp;<span className="keyword">return</span>{" "}
-                      'Hello, I am Nova';
+                      &apos;Hello, I am Nova&apos;;
                     </div>
                     <div>{"}"}</div>
                   </div>
