@@ -124,10 +124,51 @@ export const skillsData: Skill[] = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
     proficiency: 4,
   },
+
+  // Web3 Technologies
+  {
+    name: "Solidity",
+    icon: "https://docs.soliditylang.org/en/latest/_images/solidity_logo.svg",
+    proficiency: 1,
+  },
+  {
+    name: "HardHat",
+    icon: "https://cdn.worldvectorlogo.com/logos/hardhat-seeklogo-com.svg",
+    proficiency: 1,
+  },
+  {
+    name: "Wagmi",
+    icon: "https://wagmi.sh/logo-light.svg",
+    proficiency: 1,
+  },
 ];
 
 // Projects data
 export const projectsData: Project[] = [
+  {
+    id: "starter-crowd-chain",
+    title: "Starter Crowd Chain",
+    image: "/projects/startcrowd.png",
+    tagline: "Decentralized Crowdfunding Platform",
+    description:
+      "A blockchain-based crowdfunding platform that allows creators to raise funds for their projects through milestone-based funding. Features include campaign creation with detailed milestones, wallet integration for secure transactions, interactive campaign details with milestone tracking, and a creator dashboard for managing campaigns and milestones. The platform leverages smart contracts for transparent fund management and distribution.",
+    tech: [
+      "Next.js 15",
+      "Tailwind CSS 4",
+      "Prisma",
+      "Neon DB (PostgreSQL)",
+      "Hardhat",
+      "Solidity",
+      "Wagmi",
+      "RainbowKit",
+      "Framer Motion",
+      "shadcn/ui",
+      "Polygon Amoy",
+      "IPFS",
+    ],
+    liveUrl: "https://startercrowd.novanop.com/",
+    githubUrl: "",
+  },
   {
     id: "golf-fairway-system",
     title: "Golf Fairway System Web App",
