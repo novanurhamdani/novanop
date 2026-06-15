@@ -293,7 +293,7 @@ export default function Home() {
                     </span>
                     , a passionate Software Engineer with{" "}
                     <span className="text-primary font-bold">
-                      over 4 years of experience
+                      over 5 years of experience
                     </span>{" "}
                     as a Frontend Engineer, now expanding my craft into
                     Full-Stack development. Like an alchemist of old, I

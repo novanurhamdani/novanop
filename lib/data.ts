@@ -245,6 +245,20 @@ export const projectsData: Project[] = [
 export const experienceData: Experience[] = [
   {
     role: "Frontend Developer",
+    company: "Quickbill Indonesia",
+    period: "Nov 2025 - Present",
+    description: `<ul>
+    <li>Develop and enhance the Quickbill platform (quickbill.id) by delivering scalable frontend features and improving the overall user experience.</li>
+    <li>Built a comprehensive Payment History module covering Pay-In, Pay-Out, and Withdrawal transactions, enabling users to efficiently monitor financial activities.</li>
+    <li>Developed Bulk Invoice Creation features for both Pay-In and Pay-Out workflows, significantly improving operational efficiency for business users.</li>
+    <li>Led multiple UI revamp initiatives across both the customer-facing application and internal back-office system to improve usability, consistency, and visual design.</li>
+    <li>Develop and maintain Quickbill UI, the company's internal component library, ensuring reusable, scalable, and consistent UI components across projects.</li>
+    <li>Built and enhanced back-office features to simplify user onboarding, configuration, and system administration.</li>
+    <li>Currently developing Quickbill's mobile application using Flutter, contributing to a unified cross-platform user experience.</li>
+    </ul>`,
+  },
+  {
+    role: "Frontend Developer",
     company: "Orbit Tech Solution",
     period: "Apr 2025 - Jul 2025",
     description: `<ul>
