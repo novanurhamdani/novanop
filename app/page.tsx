@@ -61,7 +61,7 @@ export default function Home() {
     // Track page view when site loads
     trackPageView(
       pathname,
-      "The Code Alchemist - Novanop | Gamified Developer Portfolio"
+      "The Code Alchemist - Novanop | Gamified Developer Portfolio",
     );
   };
 
@@ -230,7 +230,7 @@ export default function Home() {
                       Ignite the Formula
                     </a>
                     <a
-                      href="/Resume_Nova_Nurhamdani.pdf"
+                      href="/CV_Nova_Nurhamdani.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block bg-card border-2 border-primary text-primary font-bold py-3 px-8 rounded-full text-lg hover:bg-primary hover:text-white transform hover:-translate-y-1 transition-all duration-300"
@@ -342,7 +342,7 @@ export default function Home() {
                             blackAndWhite={true}
                           />
                         </div>
-                      )
+                      ),
                     )}
                   </div>
                 </div>
