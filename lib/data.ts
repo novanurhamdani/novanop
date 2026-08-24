@@ -21,7 +21,12 @@ export const skillsData: Skill[] = [
   {
     name: "TypeScript",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-    proficiency: 4,
+    proficiency: 5,
+  },
+  {
+    name: "Go",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg",
+    proficiency: 2,
   },
   {
     name: "PHP",
@@ -29,7 +34,7 @@ export const skillsData: Skill[] = [
     proficiency: 3,
   },
 
-  // Frameworks
+  // Frameworks & Libraries
   {
     name: "React.js",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -38,7 +43,7 @@ export const skillsData: Skill[] = [
   {
     name: "Next.js",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-    proficiency: 4,
+    proficiency: 5,
   },
   {
     name: "React Native",
@@ -56,7 +61,12 @@ export const skillsData: Skill[] = [
     proficiency: 4,
   },
   {
-    name: "Tailwind",
+    name: "Flutter",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+    proficiency: 2,
+  },
+  {
+    name: "Tailwind CSS",
     icon: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
     proficiency: 5,
   },
@@ -66,14 +76,51 @@ export const skillsData: Skill[] = [
     proficiency: 4,
   },
   {
+    name: "Redux",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+    proficiency: 4,
+  },
+  {
     name: "Zustand",
     icon: "https://user-images.githubusercontent.com/958486/218346783-72be5ae3-b953-4dd7-b239-788a882fdad6.svg",
+    proficiency: 4,
+  },
+  {
+    name: "Jotai",
+    icon: "https://avatars.githubusercontent.com/u/68865377?s=200&v=4",
     proficiency: 4,
   },
   {
     name: "XState",
     icon: "https://xstate.js.org/logo-white.svg",
     proficiency: 3,
+  },
+
+  // Data & Databases
+  {
+    name: "PostgreSQL",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    proficiency: 3,
+  },
+  {
+    name: "MySQL",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    proficiency: 3,
+  },
+  {
+    name: "Prisma",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
+    proficiency: 4,
+  },
+  {
+    name: "MongoDB",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    proficiency: 3,
+  },
+  {
+    name: "React Query",
+    icon: "https://cdn.simpleicons.org/reactquery",
+    proficiency: 4,
   },
 
   // Developer Tools
@@ -98,12 +145,12 @@ export const skillsData: Skill[] = [
     proficiency: 3,
   },
   {
-    name: "MongoDB",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    proficiency: 3,
+    name: "Storybook",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-original.svg",
+    proficiency: 4,
   },
 
-  // Software
+  // Software & Platforms
   {
     name: "Jira",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg",
@@ -246,7 +293,7 @@ export const experienceData: Experience[] = [
   {
     role: "Frontend Developer",
     company: "Quickbill Indonesia",
-    period: "Nov 2025 - Present",
+    period: "Nov 2025 - Aug 2026",
     description: `<ul>
     <li>Develop and enhance the Quickbill platform (quickbill.id) by delivering scalable frontend features and improving the overall user experience.</li>
     <li>Built a comprehensive Payment History module covering Pay-In, Pay-Out, and Withdrawal transactions, enabling users to efficiently monitor financial activities.</li>
@@ -255,77 +302,52 @@ export const experienceData: Experience[] = [
     <li>Develop and maintain Quickbill UI, the company's internal component library, ensuring reusable, scalable, and consistent UI components across projects.</li>
     <li>Built and enhanced back-office features to simplify user onboarding, configuration, and system administration.</li>
     <li>Currently developing Quickbill's mobile application using Flutter, contributing to a unified cross-platform user experience.</li>
-    </ul>`,
+    </ul>
+    <p><strong>Tech Stack:</strong> Next.js, React, React Query, Jotai, Tailwind CSS, Flutter, TypeScript.</p>`,
   },
   {
     role: "Frontend Developer",
     company: "Orbit Tech Solution",
     period: "Apr 2025 - Jul 2025",
     description: `<ul>
-    <li>Focused on building and implementing the frontend for the RWA platform using Next.js. Responsible for slicing and developing responsive dashboard interfaces with interactive charts and analytics. Integrated document signing capabilities using Zoho Sign, ensuring seamless user experience and contract workflows. Collaborated closely with backend and Web3 teams to deliver a secure, intuitive UI aligned with the platform's decentralized features.</li>
-    <li>
-    Developed a comprehensive Golf Fairway System Web App designed to streamline golf course operations and elevate player experiences. The platform includes robust features for player tracking, real-time gameplay monitoring, tournament organization, and dynamic scoreboard management. Engineered with scalability and usability in mind, the system supports seamless interaction between players, administrators, and event organizers, offering a modern digital solution for golf course management.
-    </li>
-    </ul>`,
+    <li>Developed a sophisticated dashboard using Next.js for a Real-World Asset (RWA) Investment Platform, integrated with tokenized asset data.</li>
+    <li>Implemented data visualizations using Recharts for user asset performance and marketplace trends.</li>
+    <li>Integrated Zoho Sign to enable secure digital document signing for asset agreements and contracts.</li>
+    <li>Managed global state using Zustand, with form validation handled via Zod and data fetching through React Query and Axios.</li>
+    <li>Applied shadcn/ui and Tailwind CSS to deliver a clean, responsive UI.</li>
+    <li>Built an end-to-end Golf Fairway System Web App for player tracking, tournament organization, and real-time scoreboard updates.</li>
+    <li>Used Google Maps API for live course visualization and location-aware features.</li>
+    <li>Architected a modular dashboard with dynamic data views using Next.js, Zustand, and React Query.</li>
+    </ul>
+    <p><strong>Tech Stack:</strong> Next.js, Zustand, Tailwind CSS, Recharts, Zod, React Query, Axios, shadcn/ui, Google Maps API, MetaMask, Zoho Sign.</p>`,
   },
   {
     role: "Frontend Engineer",
     company: "Hijra Bank",
     period: "May 2022 - Feb 2025",
-    description: `<ol>
-      <li>As a Frontend Engineer at Hijra Bank, I focused on enhancing our financing processes:
-        <ul>
-          <li>Financing Originate System (FOS) for MUAP Generator and Risk Review Generator</li>
-          <li>MUAP Generator: This tool assists RM staff in generating essential documents for data collection during the financing process.</li>
-          <li>Risk Review Generator: This tool supports Risk Analyst staff by streamlining the risk review process for MUAP documents.</li>
-        </ul>
-      </li>
-      <li>With these tools, we significantly improved the documentation process for prospective and existing customers, making it more streamlined, accurate, and efficient.</li>
-      <li>Additional completed projects:
-        <ul>
-          <li>House Financing with our Financing Originate System: I played a key role in developing a cutting-edge system that transformed the house financing process.</li>
-          <li>Hijra Home Feature on Mobile Apps: I worked on the Hijra Home feature for our mobile apps, designed to provide an enhanced and personalized home-buying experience.</li>
-        </ul>
-      </li>
-    </ol>`,
+    description: `<ul>
+    <li>Developed MUAP Generator and Risk Review Generator using Next.js, leveraging xState for state management and React JSON Schema Form for dynamic form generation.</li>
+    <li>Streamlined document generation and risk review processes for RM and Risk Analyst staff.</li>
+    <li>Contributed to the Hijra Home feature using React Native, enhancing the home-buying experience for users.</li>
+    <li>Built the Sedekah Regular feature for Hijra mobile apps, enabling users to set up recurring donations seamlessly.</li>
+    <li>Created and maintained internal tools (e.g., Salman) for admin management of the Sedekah feature, ensuring smooth data flow between backend and mobile apps.</li>
+    <li>Utilized Storybook to manage and document reusable components and screens, improving development efficiency and consistency.</li>
+    <li>Maintained the Hijra official website (built on WordPress) for the financing business.</li>
+    <li>Designed and developed 3 landing pages for financing products, ensuring a seamless user experience.</li>
+    <li>Developed a custom WordPress plugin to enable admins to edit and customize landing page content without developer intervention.</li>
+    <li>Mentored Junior Frontend Engineer.</li>
+    </ul>
+    <p><strong>Tech Stack:</strong> Next.js, React Native, xState, React JSON Schema Form, JavaScript, TypeScript, HTML, CSS, Storybook, WordPress, PHP.</p>`,
   },
   {
     role: "Junior Web Developer",
     company: "Cindrum",
     period: "Jun 2021 - Apr 2022",
     description: `<ul>
-      <li>Part of team to develop cryptocurrency webs, such as exchange web and wallet</li>
-      <li>Specialized in front-end in the project</li>
-      <li>Help the team to design UI/UX and convert it to the Vue project</li>
-    </ul>`,
-  },
-  {
-    role: "Internal Audit Manager",
-    company: "KSP Mitra Dhuafa",
-    period: "Jun 2016 - Jan 2020",
-    description: `<ul>
-      <li>Working on and manage a big team (35 Internal Audit Staff)</li>
-      <li>Conducted strategic, technical reviews to verify compliance with quality control standards, schedule constraints, and budget parameters</li>
-      <li>Gathered and analyzed financial data to determine increased fraud detection</li>
-    </ul>`,
-  },
-  {
-    role: "Management Information System Staff",
-    company: "KSP Mitra Dhuafa",
-    period: "May 2010 - Jun 2016",
-    description: `Handled day-to-day running of Company Information System, ensuring high levels of productivity and progression. Adding some report features and fix some bugs in the system. Conducted research, gathered information from multiple sources, and presented results.
-
-Having experience in HTML, CSS, ASP.Net
-
-I also maintained and repaired facilities, equipment, and tools to achieve operational readiness, safety, and cleanliness. Sometimes I prepared a variety of different written communications, reports, and documents to ensure smooths operations.`,
-  },
-  {
-    role: "Junior Programmer (Intern)",
-    company: "Worxcode Imagineering Indonesia",
-    period: "Jun 2009 - Dec 2009",
-    description: `Be part of a big project from the company. The company's clients are several government companies, such as Pos Indonesia, the Ministry of Finance (Kementrian Keuangan), National Agency of Drug and Food Control of Indonesia (Badan POM).
-
-Give an assist to the Senior Programmer to add some features to the project. Learn about HTML, CSS, PHP, JavaScript, and AJAX in this intern opportunity.`,
+      <li>Developed cryptocurrency platforms, including exchange and wallet websites, specializing in frontend development.</li>
+      <li>Assisted in designing UI/UX and translating it into a Vue-based project.</li>
+    </ul>
+    <p><strong>Tech Stack:</strong> Vue.js, JavaScript, HTML, CSS.</p>`,
   },
 ];
 
@@ -336,7 +358,6 @@ export const educationData: Education[] = [
     institution: "University of the People",
     graduationDate: "Expected Graduation: 2028",
     description: "Currently pursuing a degree in Computer Science.",
-    gpa: "3.84",
   },
 ];
 

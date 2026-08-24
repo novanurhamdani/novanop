@@ -230,7 +230,7 @@ export default function Home() {
                       Ignite the Formula
                     </a>
                     <a
-                      href="/CV_Nova_Nurhamdani.pdf"
+                      href="/CV_Nova_Nurhamdani_New.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block bg-card border-2 border-primary text-primary font-bold py-3 px-8 rounded-full text-lg hover:bg-primary hover:text-white transform hover:-translate-y-1 transition-all duration-300"
@@ -291,24 +291,30 @@ export default function Home() {
                     <span className="text-primary font-bold">
                       Nova Nurhamdani
                     </span>
-                    , a passionate Software Engineer with{" "}
+                    , a Software Engineer with{" "}
                     <span className="text-primary font-bold">
-                      over 5 years of experience
+                      5+ years of professional experience
                     </span>{" "}
-                    as a Frontend Engineer, now expanding my craft into
-                    Full-Stack development. Like an alchemist of old, I
-                    transform complex problems and abstract ideas into elegant,
-                    functional, and user-centric digital solutions.
+                    building production web and mobile applications. My
+                    expertise spans JavaScript, TypeScript, React.js, and
+                    Next.js, with strong full-stack experience in Next.js API
+                    Routes, Node.js, Express.js, REST APIs, and database-backed
+                    applications. Like an alchemist of old, I transform complex
+                    problems into elegant, scalable digital solutions.
                   </p>
                   <p>
                     My &quot;laboratory&quot; is filled with modern web
                     technologies—React, Next.js, TypeScript, and Node.js are my
-                    primary elements. After mastering frontend transmutations,
-                    I&apos;ve begun exploring the deeper backend realms,
-                    combining both to create full-stack elixirs. I believe in
-                    writing clean, scalable code and am constantly experimenting
-                    with new &quot;potions&quot; and &quot;spells&quot; to push
-                    the boundaries of what&apos;s possible on the web.
+                    primary elements. With a strong background in fintech,
+                    banking, enterprise dashboards, and complex business
+                    workflows, I&apos;ve now begun exploring the deeper backend
+                    realms with{" "}
+                    <span className="text-primary font-bold">Go</span>, focusing
+                    on scalable APIs, concurrency, database design, and
+                    production-ready backend architecture. I believe in writing
+                    clean, scalable code and am constantly experimenting with
+                    new &quot;potions&quot; and &quot;spells&quot; to push the
+                    boundaries of what&apos;s possible.
                   </p>
                   <p>
                     This portfolio is my interactive spellbook, showcasing the
