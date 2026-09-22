@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { GamificationState, Badge } from "../types";
-import { badgesData, projectsData } from "../lib/data";
+import { badgesData } from "../lib/badges";
+import { projects } from "../lib/projects";
 
 const initialState: GamificationState = {
   xp: 0,
@@ -18,18 +19,6 @@ export const useGamification = () => {
   const [state, setState] = useState<GamificationState>(initialState);
   const [showBadgeNotification, setShowBadgeNotification] =
     useState<Badge | null>(null);
-
-  // Load state from localStorage on component mount
-  useEffect(() => {
-    const savedState = localStorage.getItem("gamificationState");
-    if (savedState) {
-      setState(JSON.parse(savedState));
-    } else {
-      // First visit - award initial XP and badge
-      addXp(10, "first-visit");
-      unlockBadge("Apprentice Alchemist");
-    }
-  }, []);
 
   // Save state to localStorage whenever it changes
   useEffect(() => {
@@ -161,7 +150,7 @@ export const useGamification = () => {
 
     // Senior Developer - view all projects
     if (
-      state.viewedProjects.length === projectsData.length &&
+      state.viewedProjects.length === projects.length &&
       !state.unlockedBadges.includes("Senior Developer")
     ) {
       unlockBadge("Senior Developer");
@@ -181,6 +170,21 @@ export const useGamification = () => {
     addXp(100, "contact-submit");
     unlockBadge("Pull Request Merged");
   };
+
+  // Load state from localStorage on component mount. localStorage is not
+  // readable during SSR, so hydration must happen in an effect.
+  useEffect(() => {
+    const savedState = localStorage.getItem("gamificationState");
+    if (savedState) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setState(JSON.parse(savedState));
+    } else {
+      // First visit - award initial XP and badge
+      addXp(10, "first-visit");
+      unlockBadge("Code Initiate");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     state,
