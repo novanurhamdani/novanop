@@ -3,7 +3,7 @@ import { projects } from "../../../../lib/projects";
 import StatusBadge from "../projects/StatusBadge";
 
 /**
- * Compact related-work index — links to other project pages without
+ * Compact related-work index - links to other project pages without
  * duplicating the full card treatment.
  */
 export default function RelatedWork({ currentSlug }: { currentSlug: string }) {

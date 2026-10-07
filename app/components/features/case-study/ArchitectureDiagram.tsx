@@ -5,7 +5,7 @@ interface ArchitectureDiagramProps {
 }
 
 /**
- * Layered architecture diagram — stacked technical blocks connected by
+ * Layered architecture diagram - stacked technical blocks connected by
  * hairlines, in the same visual language as the rest of the site.
  * No fake UI, no screenshots: structure only.
  */
@@ -57,7 +57,7 @@ export default function ArchitectureDiagram({
         ))}
       </ol>
       <figcaption className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-muted/60">
-        system shape — simplified
+        system shape - simplified
       </figcaption>
     </figure>
   );

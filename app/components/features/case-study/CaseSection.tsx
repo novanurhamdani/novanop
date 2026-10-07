@@ -5,7 +5,7 @@ interface CaseSectionProps {
 }
 
 /**
- * Numbered case-study section — engineering-document rhythm,
+ * Numbered case-study section - engineering-document rhythm,
  * not blog-post styling.
  */
 export default function CaseSection({

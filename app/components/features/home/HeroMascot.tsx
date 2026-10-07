@@ -31,9 +31,9 @@ export default function HeroMascot() {
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
       tabIndex={0}
-      aria-label="The Code Alchemist mascot — a small wizard who lives in the terminal"
+      aria-label="The Code Alchemist mascot - a small wizard who lives in the terminal"
     >
-      {/* Sparkles — pure decoration, appear on hover */}
+      {/* Sparkles - pure decoration, appear on hover */}
       <span
         className="mascot-sparkle left-[12%] top-[18%]"
         aria-hidden="true"
@@ -57,7 +57,7 @@ export default function HeroMascot() {
       >
         <Image
           src="/images/dark-hero.png"
-          alt="Illustration of the Code Alchemist — Nova's wizard mascot"
+          alt="Illustration of the Code Alchemist - Nova's wizard mascot"
           width={480}
           height={480}
           className="w-full h-auto"

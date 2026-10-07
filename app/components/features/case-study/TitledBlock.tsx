@@ -1,7 +1,7 @@
 import { CaseStudyBlock } from "../../../../types";
 
 /**
- * A named challenge/decision block — hairline-accented heading plus
+ * A named challenge/decision block - hairline-accented heading plus
  * reasoning. Used for both challenges and key decisions.
  */
 export default function TitledBlock({ block }: { block: CaseStudyBlock }) {

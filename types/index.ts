@@ -27,7 +27,7 @@ export interface ProductSurface {
   items: string[];
 }
 
-// Full engineering case study — the numbered detail-page narrative
+// Full engineering case study - the numbered detail-page narrative
 export interface CaseStudy {
   problem: string[];
   built: { intro: string; points: string[] };
@@ -49,7 +49,7 @@ export interface Project {
   role: string[];
   stack: string[];
   featured?: boolean;
-  /** Real screenshot/asset path — when absent an abstract visual is used */
+  /** Real screenshot/asset path - when absent an abstract visual is used */
   thumbnail?: string;
   demoUrl?: string;
   sourceUrl?: string;
