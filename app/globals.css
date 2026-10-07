@@ -1,16 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0f051d;
-  --color-foreground: #e0d8f0;
-  --color-card: #1a0a33;
-  --color-primary: #a855f7;
-  --color-secondary: #fbbf24;
-  --color-success: #22c55e;
-  --color-border: #392a54;
+  /* Neo-Brutalist Cyber-Grid tokens - dark-first, cobalt + lime accents,
+     white panels as deliberate contrast breaks */
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+  --color-muted: #a3a3a3;
+  --color-surface: #111111;
+  --color-surface-strong: #1a1a1a;
+  --color-card: #080808;
 
-  --font-heading: var(--font-montserrat);
+  --color-dark: #0a0a0a;
+  --color-dark-surface: #111111;
+  --color-dark-surface-strong: #171717;
+  --color-dark-border: #262626;
+  --color-dark-muted: #a3a3a3;
+
+  --color-primary: #1a4bff; /* cobalt - feature panels + interactive accent */
+  --color-primary-dark: #0f35c4; /* cobalt hover */
+  --color-secondary: #ceff00; /* lime - loud signal + primary CTA color */
+  --color-accent: #ceff00;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+
+  --color-border: #262626; /* dark-surface structural border */
+  --color-border-muted: #333333;
+  --color-border-light: #d4d4d4; /* borders inside white panels */
+
+  --shadow-brutal: 4px 4px 0 #000000;
+  --shadow-brutal-blue: 4px 4px 0 #1a4bff;
+  --shadow-brutal-lime: 4px 4px 0 #ceff00;
+
+  --font-heading: var(--font-syne);
   --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
@@ -35,18 +58,123 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Fixed ticker+nav header is ~88px tall - anchor jumps must clear it */
+section[id] {
+  scroll-margin-top: 92px;
+}
+
+/* Accessible focus state */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-secondary);
+  color: #0a0a0a;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+  background: var(--color-surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 10px;
+  background: var(--color-border-muted);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: var(--color-secondary);
+}
+
+/* ── Editorial helpers ─────────────────────────────────────────────── */
+
+/* Section label: black chip + lime text, works on dark AND light panels */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  padding: 0.2rem 0.55rem;
+}
+.eyebrow-dark {
+  color: var(--color-secondary);
+}
+
+/* Engineering grid backdrops - discovered, not shouted */
+.grid-backdrop {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+@media (min-width: 1024px) {
+  .grid-backdrop {
+    background-size: 32px 32px;
+  }
+}
+.grid-backdrop-dark {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+@media (min-width: 1024px) {
+  .grid-backdrop-dark {
+    background-size: 32px 32px;
+  }
+}
+.grid-backdrop-light {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+@media (min-width: 1024px) {
+  .grid-backdrop-light {
+    background-size: 32px 32px;
+  }
+}
+
+/* ── Brutalist buttons: physical block interaction ─────────────────── */
+.btn-brutal {
+  border: 2px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.btn-brutal:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-brutal);
+}
+.btn-brutal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000000;
+}
+
+/* ── Motion: progressive-enhancement reveal ────────────────────────── */
+/* .js is set on <html> by an inline script before first paint, so
+   [data-reveal] elements are hidden from the start for JS users and
+   never hidden for no-JS users. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+.js [data-reveal].visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes fadeIn {
@@ -63,33 +191,58 @@ html {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
+@keyframes floatHero {
+  0%,
+  100% {
     transform: translateY(0);
   }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.floating-hero-image {
+  animation: floatHero 7s ease-in-out infinite;
+  filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.12));
 }
 
-.reveal {
+/* Tiny spark marks that appear around the mascot on hover */
+.mascot-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.3s ease;
 }
-.reveal.visible {
+.mascot-sparkle:nth-child(odd) {
+  background: var(--color-secondary);
+}
+.mascot-stage:hover .mascot-sparkle,
+.mascot-stage:focus-visible .mascot-sparkle {
   opacity: 1;
-  transform: translateY(0);
+  animation: sparkleDrift 1.8s ease-in-out infinite;
+}
+.mascot-sparkle:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.mascot-sparkle:nth-child(3) {
+  animation-delay: 0.9s;
+}
+@keyframes sparkleDrift {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.4);
+  }
 }
 
-/* Profile image flip animation */
+/* ── Profile image flip (kept - small personality detail) ──────────── */
 .profile-image-container {
   perspective: 1000px;
   cursor: pointer;
 }
-
 .profile-image-inner {
   position: relative;
   width: 100%;
@@ -97,547 +250,118 @@ html {
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
-
-.profile-image-container:hover .profile-image-inner {
+.profile-image-container:hover .profile-image-inner,
+.profile-image-container:focus-visible .profile-image-inner {
   transform: rotateY(180deg);
 }
-
 .profile-image-front,
 .profile-image-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 50%;
   overflow: hidden;
 }
-
 .profile-image-back {
   transform: rotateY(180deg);
 }
 
-/* Floating code snippets */
-.floating-snippet {
-  background: rgba(26, 10, 51, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  border-radius: 8px;
-  padding: 12px 16px;
-  color: #e0d8f0;
-  font-family: monospace;
-  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.25);
-  position: absolute;
-  z-index: 200;
-  max-width: 100%;
-}
-
-.floating-snippet .code-content {
-  margin: 0;
-  white-space: pre-wrap;
-  font-family: monospace;
-  color: #fbbf24; /* Secondary color */
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-.floating-snippet .code-content div {
-  margin-bottom: 0.25rem;
-}
-
-/* Syntax highlighting for the code snippets */
-.floating-snippet code .keyword {
-  color: #a855f7; /* Primary color */
-  font-weight: bold;
-}
-
-.floating-snippet code .string {
-  color: #22c55e; /* Success color */
-}
-
-.floating-snippet code .comment {
-  color: rgba(224, 216, 240, 0.6);
-  font-style: italic;
-}
-
-@keyframes float1 {
-  0%,
-  100% {
-    transform: translateY(0) rotate(-2deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(0deg);
-  }
-}
-
-@keyframes float2 {
-  0%,
-  100% {
-    transform: translateY(0) rotate(2deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(0deg);
-  }
-}
-
-@keyframes float3 {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(3deg);
-  }
-}
-
-/* Alchemist-themed hero background */
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 1;
-  margin-left: calc(-50vw + 50%);
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 5, 29, 0.9),
-    rgba(15, 5, 29, 0.95)
-  );
-}
-
-.magic-circle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.1;
-  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
-  animation: pulse 8s infinite alternate;
-}
-
-.magic-circle-1 {
-  width: 500px;
-  height: 500px;
-  top: -100px;
-  left: -100px;
-}
-
-.magic-circle-2 {
-  width: 300px;
-  height: 300px;
-  bottom: 10%;
-  right: 5%;
-  background: radial-gradient(
-    circle,
-    var(--color-secondary) 0%,
-    transparent 70%
-  );
-  animation-delay: 2s;
-}
-
-.magic-circle-3 {
-  width: 200px;
-  height: 200px;
-  top: 40%;
-  left: 30%;
-  background: radial-gradient(circle, var(--color-success) 0%, transparent 70%);
-  animation-delay: 4s;
-}
-
-.magic-particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a855f7' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1.5'/%3E%3Ccircle cx='13' cy='13' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
-  opacity: 0.5;
-}
-
-/* Magical runes and alchemy symbols */
-.magic-runes {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.07;
-  background-size: 300px 300px;
-  background-image: radial-gradient(
-      circle at 10% 20%,
-      var(--color-primary) 1px,
-      transparent 1px
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      var(--color-secondary) 1px,
-      transparent 1px
-    ),
-    radial-gradient(
-      circle at 50% 50%,
-      var(--color-success) 1px,
-      transparent 1px
-    );
-  animation: shimmer 15s infinite linear;
-}
-
-.alchemy-symbol {
-  position: absolute;
-  opacity: 0.1;
-  transform: rotate(45deg);
-  border: 1px solid var(--color-primary);
-}
-
-.alchemy-symbol-1 {
-  width: 80px;
-  height: 80px;
-  top: 15%;
-  left: 20%;
-  border-radius: 50%;
-}
-
-.alchemy-symbol-2 {
-  width: 60px;
-  height: 60px;
-  bottom: 25%;
-  right: 15%;
-  border-radius: 0;
-}
-
-.alchemy-symbol-3 {
-  width: 100px;
-  height: 100px;
-  top: 60%;
-  left: 10%;
-  border-radius: 8px;
-  transform: rotate(30deg);
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 0 0;
-    opacity: 0.05;
-  }
-  50% {
-    opacity: 0.08;
-  }
-  100% {
-    background-position: 300px 300px;
-    opacity: 0.05;
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.15;
-  }
-}
-
-.float-1 {
-  animation: float1 6s ease-in-out infinite;
-}
-
-.float-2 {
-  animation: float2 8s ease-in-out infinite;
-}
-
-.float-3 {
-  animation: float3 7s ease-in-out infinite;
-}
-
-.floating-hero-image {
-  animation: floatHero 6s ease-in-out infinite;
-  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
-}
-
-@keyframes floatHero {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-/* Skills ticker animation */
-.skills-ticker {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  background-color: rgba(15, 5, 29, 0.3);
-  border-radius: 8px;
-  padding: 1rem 0;
-}
-
-.skills-row {
-  display: flex;
-  animation-duration: 40s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  gap: 1rem;
-  padding: 0.5rem 0;
-  width: max-content;
-}
-
-.skills-row-1 {
-  animation-name: tickerLeft;
-}
-
-@keyframes tickerLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-100% / 3));
-  }
-}
-
-/* Make skill items uniform in ticker */
-.skill-item {
-  background-color: var(--color-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-}
-
-/* Experience Timeline Animation */
-.experience-timeline {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  height: 100%;
-}
-
-.experience-line {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background-color: var(--color-border);
-}
-
-.experience-fill-line {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 0;
-  background: linear-gradient(
-    to bottom,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-  animation: fillLine 2s ease-out forwards;
-  background-size: 200% 200%;
-  animation: fillLine 2s ease-out forwards, gradientFlow 4s ease infinite;
-}
-
-.experience-dot {
-  position: absolute;
-  left: -1.5rem;
-  top: 0.5rem;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgba(168, 85, 247, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: pulseDot 2s infinite;
-}
-
-.experience-dot-inner {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  border: 2px solid var(--color-background);
-}
-
-.experience-content {
-  position: relative;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease-out forwards;
-  animation-delay: calc(var(--index, 0) * 0.2s);
-}
-
-@keyframes fillLine {
-  0% {
-    height: 0;
-  }
-  100% {
-    height: 100%;
-  }
-}
-
-@keyframes gradientFlow {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
-}
-
-@keyframes pulseDot {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
-  }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 10px rgba(168, 85, 247, 0);
-  }
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Loading spinner for contact form */
+/* ── Contact form spinner ──────────────────────────────────────────── */
 .loading-spinner {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 3px solid rgba(168, 85, 247, 0.2);
+  border: 3px solid rgba(26, 75, 255, 0.2);
   border-top-color: var(--color-primary);
   animation: spin 1s infinite linear;
 }
-
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
 
-/* Experience description list styling */
-.experience-description ul,
-.experience-description ol {
-  margin-left: 1.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.experience-description ul {
-  list-style-type: disc;
-}
-
-.experience-description ol {
-  list-style-type: decimal;
-}
-
-.experience-description li {
-  margin-bottom: 0.25rem;
-}
-
-.experience-description ul ul,
-.experience-description ol ul {
-  list-style-type: circle;
-  margin-top: 0.25rem;
-}
-
-.experience-description ul ol,
-.experience-description ol ol {
-  list-style-type: lower-alpha;
-  margin-top: 0.25rem;
-}
-
-/* Custom Cursor Styles */
-html,
-body {
-  cursor: none;
-}
-
-a,
-button,
-input,
-textarea,
-select,
-[role="button"],
-label {
-  cursor: none;
-}
-
-.custom-cursor {
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(
-    -20px,
-    -20px
-  ); /* Offset to position the potion correctly */
-  transition: transform 0.1s ease;
-  opacity: 0;
-  will-change: transform;
-}
-
-.custom-cursor.visible {
-  opacity: 1;
-}
-
-.custom-cursor.hovering {
-  transform: translate(-20px, -20px) scale(1.2);
-}
-
-.potion-cursor {
-  width: 32px;
-  height: 32px;
-  filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.7));
-  transform-origin: center;
-  animation: slight-tilt 3s ease-in-out infinite alternate;
-}
-
-@keyframes slight-tilt {
-  0% {
-    transform: rotate(-5deg);
+/* ── Reduced motion: one global kill-switch ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  100% {
-    transform: rotate(5deg);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }
 
-.bubble {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  animation: float 2s ease-out forwards;
-  opacity: 0.7;
-}
-
-@keyframes float {
-  0% {
-    transform: translate(-50%, -50%) scale(0.5);
-    opacity: 0.7;
+/* ── Print: the resume is a document, not a page ───────────────────── */
+@media print {
+  /* Site chrome and decorative layers stay out of the document
+     (the resume's own <header> is scoped inside .resume-page) */
+  .site-header,
+  footer,
+  .no-print,
+  .mascot-sparkle,
+  .grid-backdrop {
+    display: none !important;
   }
-  100% {
-    transform: translate(-50%, -150%) scale(1.5);
-    opacity: 0;
+
+  /* Reveal-on-scroll must never hide printed content */
+  .js [data-reveal],
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  /* Resume prints as dark text on white */
+  .resume-page {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #0a0a0a !important;
+  }
+  .resume-page *,
+  .resume-page a {
+    color: #0a0a0a !important;
+    background: transparent !important;
+    border-color: #d4d4d4 !important;
+    text-decoration: none !important;
+  }
+  .resume-page .eyebrow {
+    color: #1a4bff !important;
+  }
+
+  /* Sensible page breaks */
+  .resume-section {
+    break-inside: auto;
+  }
+  .resume-entry,
+  .resume-page article,
+  .resume-page header {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .resume-page h1,
+  .resume-page h2,
+  .resume-page h3 {
+    break-after: avoid;
+    page-break-after: avoid;
   }
 }
