@@ -5,7 +5,7 @@ export const alt = "Novanop - Nova Nurhamdani";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/** Default share card - dark/purple identity, yellow accent. */
+/** Default share card - black/white cyber-grid, cobalt + lime accents. */
 export default function OpengraphImage() {
   return new ImageResponse(
     <div
@@ -16,11 +16,11 @@ export default function OpengraphImage() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: 64,
-        background: "#0f051d",
+        background: "#0a0a0a",
         backgroundImage:
-          "linear-gradient(to right, rgba(162,147,201,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(162,147,201,0.07) 1px, transparent 1px)",
-        backgroundSize: "56px 56px",
-        color: "#e0d8f0",
+          "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+        backgroundSize: "32px 32px",
+        color: "#ffffff",
         fontFamily: "sans-serif",
       }}
     >
@@ -30,11 +30,11 @@ export default function OpengraphImage() {
           justifyContent: "space-between",
           fontSize: 20,
           letterSpacing: 6,
-          color: "#fbbf24",
+          color: "#1a4bff",
         }}
       >
         <span>NOVANOP</span>
-        <span style={{ color: "#a293c9" }}>THE CODE ALCHEMIST</span>
+        <span style={{ color: "#ceff00" }}>THE CODE ALCHEMIST</span>
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div
@@ -43,6 +43,7 @@ export default function OpengraphImage() {
             fontWeight: 800,
             lineHeight: 1.05,
             letterSpacing: -2,
+            textTransform: "uppercase",
           }}
         >
           {site.name}
@@ -51,7 +52,7 @@ export default function OpengraphImage() {
           style={{
             marginTop: 18,
             fontSize: 30,
-            color: "#a855f7",
+            color: "#1a4bff",
             fontWeight: 700,
           }}
         >
@@ -62,13 +63,23 @@ export default function OpengraphImage() {
         style={{
           display: "flex",
           justifyContent: "space-between",
+          alignItems: "center",
           fontSize: 20,
           letterSpacing: 2,
-          color: "#a293c9",
+          color: "#a3a3a3",
         }}
       >
         <span>{site.tagline}</span>
-        <span>novanop.com</span>
+        <span
+          style={{
+            background: "#ceff00",
+            color: "#0a0a0a",
+            padding: "4px 12px",
+            fontWeight: 700,
+          }}
+        >
+          novanop.com
+        </span>
       </div>
     </div>,
     size,

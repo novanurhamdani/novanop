@@ -22,6 +22,8 @@ export const projects: Project[] = [
     role: ["Frontend", "Backend", "Architecture"],
     stack: ["Next.js", "TypeScript", "Go", "PostgreSQL"],
     featured: true,
+    thumbnail: "/projects/loomoda-1.png",
+    screenshots: ["/projects/loomoda-2.png", "/projects/loomoda-3.png"],
     caseStudy: {
       problem: [
         "Loomoda started from a familiar situation: a fashion business running on WordPress and WooCommerce, where the product catalog lives inside a CMS, orders are posts with meta fields, and every customization means working around a plugin.",
@@ -330,6 +332,8 @@ export const projects: Project[] = [
       "Supabase",
       "React Flow",
     ],
+    thumbnail: "/projects/cuetoba-1.png",
+    screenshots: ["/projects/cuetoba-2.png"],
     demoUrl: "https://cuetoba.com",
     links: [
       { label: "Customer app", url: "https://app.cuetoba.com" },

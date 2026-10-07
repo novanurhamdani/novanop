@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useGamificationContext } from "../providers/GamificationProvider";
@@ -29,12 +29,24 @@ export default function Navbar() {
 
   return (
     <header
-      className={`site-header fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors duration-300 ${
-        scrolled
-          ? "border-border/60 bg-background/85"
-          : "border-transparent bg-transparent"
+      className={`site-header fixed top-0 left-0 right-0 z-50 border-b border-border backdrop-blur-md transition-colors duration-300 ${
+        scrolled ? "bg-background" : "bg-background/85"
       }`}
     >
+      {/* Ticker strip - system status line, decorative facts only */}
+      <div
+        className="no-print border-b border-border bg-surface px-4 py-1.5 flex items-center justify-between font-mono text-[10px] tracking-wider text-muted"
+        aria-hidden="true"
+      >
+        <span className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-secondary" />
+          <span className="text-foreground font-bold">THE CODE ALCHEMIST</span>
+        </span>
+        <span className="hidden md:inline">
+          REACT · NEXT.JS · TYPESCRIPT · GO · POSTGRESQL
+        </span>
+        <span className="text-secondary">EST. 2009</span>
+      </div>
       <nav
         className="container mx-auto px-5 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3"
         aria-label="Main navigation"
@@ -45,22 +57,24 @@ export default function Navbar() {
             href="/"
             className="flex items-center gap-2 group shrink-0"
             onClick={() => gamification?.clickLogo()}
-            aria-label="Novanop home"
+            aria-label="NOVANOP home"
           >
             <Image
-              src="/images/novanop-logo.png"
-              width={30}
-              height={30}
+              src="/images/new-logo.png"
               alt=""
-              className="h-7 w-7 sm:h-8 sm:w-8"
+              width={4168}
+              height={4168}
+              sizes="32px"
+              unoptimized
+              className="h-8 w-8 border border-black object-cover"
             />
-            <span className="hidden sm:inline font-heading text-sm sm:text-base font-extrabold tracking-wide group-hover:text-secondary transition-colors">
+            <span className="hidden sm:inline font-mono text-xs sm:text-sm tracking-widest group-hover:text-secondary transition-colors">
               NOVANOP
             </span>
           </Link>
           {gamification && gamification.state.level > 1 && (
             <span
-              className="hidden sm:inline-flex items-center font-mono text-[10px] tracking-widest text-secondary/90 border border-secondary/30 px-1.5 py-0.5"
+              className="hidden sm:inline-flex items-center font-mono text-[10px] tracking-widest text-black bg-secondary border border-border px-1.5 py-0.5"
               title="Visitor level - keep exploring to level up"
             >
               LV.{gamification.state.level}
@@ -99,7 +113,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/#contact"
-            className="text-secondary hover:text-foreground transition-colors"
+            className="bg-secondary text-black border border-black px-3 py-1.5 font-bold hover:bg-white transition-colors"
           >
             Contact
           </Link>

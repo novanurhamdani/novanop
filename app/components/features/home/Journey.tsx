@@ -10,41 +10,45 @@ export default function Journey() {
     <section
       id="journey"
       data-section="journey"
-      className="border-t border-border/60"
+      className="border-t border-border bg-background"
     >
-      <div className="container mx-auto px-5 sm:px-6 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
         <SectionHeading
           eyebrow="Journey"
+          number="06"
           title="From writing code to building systems."
+          compact
         />
 
-        <ol className="relative ml-2 max-w-2xl border-l-2 border-border pl-8 space-y-8">
+        <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {journey.map((milestone, index) => (
-            <li key={index} className="relative" data-reveal>
+            <li
+              key={index}
+              className="relative border border-border bg-card p-4"
+              data-reveal
+            >
               <span
-                className={`absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 ${
-                  milestone.year
-                    ? "border-secondary bg-secondary/20"
-                    : "border-primary/60 bg-primary/15"
+                className={`mb-3 block h-2 w-2 ${
+                  milestone.year ? "bg-secondary" : "bg-primary"
                 }`}
                 aria-hidden="true"
               />
               {milestone.year && (
-                <span className="font-mono text-xs tracking-[0.2em] text-secondary">
+                <span className="font-mono text-[10px] tracking-[0.2em] text-secondary">
                   {milestone.year}
                 </span>
               )}
               <p
                 className={`font-heading ${
                   milestone.year
-                    ? "font-extrabold text-lg sm:text-xl"
-                    : "font-bold text-base text-foreground/85"
+                    ? "font-extrabold text-base sm:text-lg"
+                    : "font-bold text-sm text-foreground/85"
                 }`}
               >
                 {milestone.label}
               </p>
               {milestone.description && (
-                <p className="mt-1 text-sm text-muted leading-relaxed">
+                <p className="mt-2 text-xs leading-relaxed text-muted">
                   {milestone.description}
                 </p>
               )}

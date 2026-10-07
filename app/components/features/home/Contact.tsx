@@ -42,19 +42,27 @@ export default function Contact() {
     <section
       id="contact"
       data-section="contact"
-      className="border-t border-border/60"
+      className="relative border-t-2 border-border bg-dark text-white"
     >
-      <div className="container mx-auto px-5 sm:px-6 py-20 sm:py-28">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Copy + direct links */}
-          <div data-reveal>
+      <div
+        className="grid-backdrop-dark absolute inset-x-0 h-full pointer-events-none"
+        aria-hidden="true"
+      />
+      <div className="relative container mx-auto px-5 sm:px-6 py-20 sm:py-28">
+        <div className="grid gap-0 lg:grid-cols-2 border border-border">
+          {/* Cobalt feature panel: copy + direct links */}
+          <div
+            data-reveal
+            className="bg-primary text-white p-8 sm:p-12 min-w-0"
+          >
             <p className="eyebrow">
-              Contact <span className="text-muted/60">/ whisper a spell</span>
+              08 / Contact{" "}
+              <span className="text-dark-muted">/ whisper a spell</span>
             </p>
-            <h2 className="mt-4 font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-tight text-balance">
+            <h2 className="mt-4 font-heading font-extrabold uppercase tracking-tight text-3xl sm:text-4xl lg:text-5xl leading-[0.95] text-balance">
               Have a project, opportunity, or interesting problem?
             </h2>
-            <p className="mt-4 max-w-md text-muted leading-relaxed">
+            <p className="mt-4 max-w-md text-blue-100 leading-relaxed">
               I&apos;m open to product work, engineering roles, and interesting
               technical challenges - especially where frontend meets real
               systems.
@@ -63,15 +71,18 @@ export default function Contact() {
             <a
               href={`mailto:${site.email}`}
               aria-label="Send email to Nova Nurhamdani"
-              className="mt-8 inline-flex items-center gap-2 bg-primary px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-purple-dark hover:-translate-y-0.5"
+              className="btn-brutal mt-8 inline-flex items-center gap-2 bg-secondary px-6 py-3 text-sm text-black"
             >
-              Start a conversation <span aria-hidden="true">→</span>
+              Start a conversation
             </a>
 
-            <ul className="mt-10 space-y-3">
+            <ul className="mt-10 space-y-3 border-t border-blue-400/30 pt-8">
               {socialLinks.map((link) => (
-                <li key={link.label} className="flex items-baseline gap-4">
-                  <span className="w-20 font-mono text-[10px] uppercase tracking-[0.22em] text-muted/70">
+                <li
+                  key={link.label}
+                  className="flex flex-wrap items-baseline gap-x-4 gap-y-1 min-w-0"
+                >
+                  <span className="w-20 shrink-0 font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">
                     {link.label}
                   </span>
                   <a
@@ -81,7 +92,7 @@ export default function Contact() {
                     }
                     rel="noopener noreferrer"
                     aria-label={link.ariaLabel}
-                    className="font-mono text-sm text-foreground/85 hover:text-secondary transition-colors"
+                    className="min-w-0 break-all font-mono text-sm text-white hover:text-secondary transition-colors"
                   >
                     {link.value}
                   </a>
@@ -91,28 +102,25 @@ export default function Contact() {
           </div>
 
           {/* Form - same /api/contact backend as before */}
-          <div data-reveal>
+          <div data-reveal className="bg-card p-8 sm:p-12 min-w-0">
             {status === "sent" ? (
-              <div className="border border-success/40 bg-success/10 p-8 text-center">
+              <div className="border border-secondary bg-secondary/10 p-8 text-center">
                 <p className="text-3xl" aria-hidden="true">
                   🕊️
                 </p>
-                <h3 className="mt-3 font-heading font-bold text-xl text-success">
+                <h3 className="mt-3 font-heading font-bold text-xl text-secondary">
                   Message dispatched!
                 </h3>
-                <p className="mt-2 text-sm text-muted">
+                <p className="mt-2 text-sm text-dark-muted">
                   Thank you for reaching out. The alchemist will reply shortly.
                 </p>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="border border-border bg-card p-6 sm:p-8"
-              >
+              <form onSubmit={handleSubmit}>
                 <div className="mb-5">
                   <label
                     htmlFor="contact-name"
-                    className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-muted"
+                    className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-dark-muted"
                   >
                     Name
                   </label>
@@ -122,13 +130,13 @@ export default function Contact() {
                     name="name"
                     required
                     autoComplete="name"
-                    className="w-full border border-border bg-background px-3 py-2.5 text-sm focus:border-primary focus:outline-none"
+                    className="w-full border border-dark-border bg-dark-surface-strong px-3 py-2.5 text-sm text-white focus:border-secondary focus:outline-none"
                   />
                 </div>
                 <div className="mb-5">
                   <label
                     htmlFor="contact-email"
-                    className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-muted"
+                    className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-dark-muted"
                   >
                     Email
                   </label>
@@ -138,13 +146,13 @@ export default function Contact() {
                     name="email"
                     required
                     autoComplete="email"
-                    className="w-full border border-border bg-background px-3 py-2.5 text-sm focus:border-primary focus:outline-none"
+                    className="w-full border border-dark-border bg-dark-surface-strong px-3 py-2.5 text-sm text-white focus:border-secondary focus:outline-none"
                   />
                 </div>
                 <div className="mb-6">
                   <label
                     htmlFor="contact-message"
-                    className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-muted"
+                    className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-dark-muted"
                   >
                     Message
                   </label>
@@ -153,13 +161,13 @@ export default function Contact() {
                     name="message"
                     rows={5}
                     required
-                    className="w-full resize-y border border-border bg-background px-3 py-2.5 text-sm focus:border-primary focus:outline-none"
+                    className="w-full resize-y border border-dark-border bg-dark-surface-strong px-3 py-2.5 text-sm text-white focus:border-secondary focus:outline-none"
                   />
                 </div>
 
                 {status === "error" && (
                   <p
-                    className="mb-4 border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-300"
+                    className="mb-4 border border-danger bg-danger/10 px-3 py-2 text-sm text-red-400"
                     role="alert"
                   >
                     The spell fizzled - something went wrong. Please try again
@@ -170,7 +178,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="w-full border border-primary bg-primary/15 px-6 py-3 font-semibold text-foreground transition-all duration-300 hover:bg-primary hover:text-white disabled:opacity-50"
+                  className="btn-brutal w-full bg-secondary px-6 py-3 text-sm text-black disabled:opacity-50"
                 >
                   {status === "sending" ? "Casting spell…" : "Dispatch message"}
                 </button>

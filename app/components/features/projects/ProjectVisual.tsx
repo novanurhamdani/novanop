@@ -97,11 +97,11 @@ export default function ProjectVisual({ slug }: ProjectVisualProps) {
     >
       <svg
         viewBox="0 0 176 176"
-        className="absolute inset-0 m-auto h-[70%] w-auto text-primary/70 transition-colors duration-300 group-hover:text-secondary/80"
+        className="absolute inset-0 m-auto h-[70%] w-auto text-foreground/40 transition-colors duration-150 group-hover:text-primary"
       >
         {visuals[slug] ?? fallback}
       </svg>
-      <span className="absolute bottom-3 left-4 font-mono text-[10px] tracking-[0.2em] text-muted/60 uppercase">
+      <span className="absolute bottom-3 left-4 font-mono text-[10px] tracking-[0.2em] text-muted uppercase">
         NOV-W · {slug}
       </span>
     </div>

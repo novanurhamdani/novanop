@@ -6,8 +6,8 @@ export default function PrintButton() {
     <button
       type="button"
       onClick={() => window.print()}
-      aria-label="Print or save resume as PDF"
-      className="no-print inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-secondary hover:text-secondary"
+      aria-label="Print / Save as PDF"
+      className="no-print btn-brutal inline-flex items-center gap-2 bg-primary px-5 py-2.5 text-sm text-white"
     >
       Print / Save as PDF <span aria-hidden="true">⎙</span>
     </button>

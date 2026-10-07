@@ -1,20 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  /* Novanop design tokens - deep purple base, yellow accent, dark editorial */
-  --color-background: #0f051d;
-  --color-foreground: #e0d8f0;
-  --color-muted: #a293c9;
-  --color-surface: #160b2c;
-  --color-card: #1a0a33;
-  --color-primary: #a855f7;
-  --color-purple-dark: #6d28d9;
-  --color-secondary: #fbbf24;
-  --color-accent: #fbbf24;
-  --color-success: #22c55e;
-  --color-border: #392a54;
+  /* Neo-Brutalist Cyber-Grid tokens - dark-first, cobalt + lime accents,
+     white panels as deliberate contrast breaks */
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+  --color-muted: #a3a3a3;
+  --color-surface: #111111;
+  --color-surface-strong: #1a1a1a;
+  --color-card: #080808;
 
-  --font-heading: var(--font-montserrat);
+  --color-dark: #0a0a0a;
+  --color-dark-surface: #111111;
+  --color-dark-surface-strong: #171717;
+  --color-dark-border: #262626;
+  --color-dark-muted: #a3a3a3;
+
+  --color-primary: #1a4bff; /* cobalt - feature panels + interactive accent */
+  --color-primary-dark: #0f35c4; /* cobalt hover */
+  --color-secondary: #ceff00; /* lime - loud signal + primary CTA color */
+  --color-accent: #ceff00;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+
+  --color-border: #262626; /* dark-surface structural border */
+  --color-border-muted: #333333;
+  --color-border-light: #d4d4d4; /* borders inside white panels */
+
+  --shadow-brutal: 4px 4px 0 #000000;
+  --shadow-brutal-blue: 4px 4px 0 #1a4bff;
+  --shadow-brutal-lime: 4px 4px 0 #ceff00;
+
+  --font-heading: var(--font-syne);
   --font-sans: var(--font-space-grotesk);
   --font-mono: var(--font-jetbrains-mono);
 }
@@ -41,48 +58,107 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Fixed ticker+nav header is ~88px tall - anchor jumps must clear it */
+section[id] {
+  scroll-margin-top: 92px;
+}
+
 /* Accessible focus state */
 :focus-visible {
-  outline: 2px solid var(--color-secondary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
 ::selection {
-  background: rgba(168, 85, 247, 0.35);
-  color: var(--color-foreground);
+  background: var(--color-secondary);
+  color: #0a0a0a;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+  background: var(--color-surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 10px;
+  background: var(--color-border-muted);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: var(--color-secondary);
 }
 
 /* ── Editorial helpers ─────────────────────────────────────────────── */
 
+/* Section label: black chip + lime text, works on dark AND light panels */
 .eyebrow {
+  display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: var(--color-secondary);
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  padding: 0.2rem 0.55rem;
+}
+.eyebrow-dark {
   color: var(--color-secondary);
 }
 
-/* Faint engineering grid backdrop for hero / surfaces */
+/* Engineering grid backdrops - discovered, not shouted */
 .grid-backdrop {
   background-image:
-    linear-gradient(to right, rgba(162, 147, 201, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(162, 147, 201, 0.06) 1px, transparent 1px);
-  background-size: 56px 56px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+@media (min-width: 1024px) {
+  .grid-backdrop {
+    background-size: 32px 32px;
+  }
+}
+.grid-backdrop-dark {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+@media (min-width: 1024px) {
+  .grid-backdrop-dark {
+    background-size: 32px 32px;
+  }
+}
+.grid-backdrop-light {
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+@media (min-width: 1024px) {
+  .grid-backdrop-light {
+    background-size: 32px 32px;
+  }
+}
+
+/* ── Brutalist buttons: physical block interaction ─────────────────── */
+.btn-brutal {
+  border: 2px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.btn-brutal:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-brutal);
+}
+.btn-brutal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000000;
 }
 
 /* ── Motion: progressive-enhancement reveal ────────────────────────── */
@@ -126,19 +202,20 @@ html {
 }
 .floating-hero-image {
   animation: floatHero 7s ease-in-out infinite;
-  filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.12));
 }
 
-/* Tiny sparkle that appears around the mascot on hover */
+/* Tiny spark marks that appear around the mascot on hover */
 .mascot-sparkle {
   position: absolute;
   width: 6px;
   height: 6px;
-  border-radius: 50%;
-  background: var(--color-secondary);
+  background: var(--color-primary);
   opacity: 0;
-  box-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
   transition: opacity 0.3s ease;
+}
+.mascot-sparkle:nth-child(odd) {
+  background: var(--color-secondary);
 }
 .mascot-stage:hover .mascot-sparkle,
 .mascot-stage:focus-visible .mascot-sparkle {
@@ -183,7 +260,6 @@ html {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 4px;
   overflow: hidden;
 }
 .profile-image-back {
@@ -195,7 +271,7 @@ html {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 3px solid rgba(168, 85, 247, 0.2);
+  border: 3px solid rgba(26, 75, 255, 0.2);
   border-top-color: var(--color-primary);
   animation: spin 1s infinite linear;
 }
@@ -259,17 +335,17 @@ html {
     max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: #1a1626 !important;
+    color: #0a0a0a !important;
   }
   .resume-page *,
   .resume-page a {
-    color: #1a1626 !important;
+    color: #0a0a0a !important;
     background: transparent !important;
-    border-color: #d4cfe0 !important;
+    border-color: #d4d4d4 !important;
     text-decoration: none !important;
   }
   .resume-page .eyebrow {
-    color: #5a4a86 !important;
+    color: #1a4bff !important;
   }
 
   /* Sensible page breaks */

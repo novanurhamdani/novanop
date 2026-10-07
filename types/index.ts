@@ -51,6 +51,8 @@ export interface Project {
   featured?: boolean;
   /** Real screenshot/asset path - when absent an abstract visual is used */
   thumbnail?: string;
+  /** Additional real screenshots shown in the case-study header */
+  screenshots?: string[];
   demoUrl?: string;
   sourceUrl?: string;
   caseStudyUrl?: string;

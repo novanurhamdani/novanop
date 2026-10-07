@@ -1,31 +1,32 @@
 import { ProjectStatus } from "../../../../types";
 
-const statusStyles: Record<ProjectStatus, { label: string; className: string }> =
-  {
-    live: {
-      label: "LIVE",
-      className: "text-success border-success/50 bg-success/10",
-    },
-    building: {
-      label: "BUILDING",
-      className: "text-secondary border-secondary/50 bg-secondary/10",
-    },
-    experiment: {
-      label: "EXPERIMENT",
-      className: "text-primary border-primary/50 bg-primary/10",
-    },
-    planned: {
-      label: "PLANNED",
-      className: "text-muted border-muted/50 bg-muted/10",
-    },
-  };
+const statusStyles: Record<ProjectStatus, { label: string; dot: string }> = {
+  live: {
+    label: "LIVE",
+    dot: "bg-secondary rounded-full",
+  },
+  building: {
+    label: "BUILDING",
+    dot: "bg-primary",
+  },
+  experiment: {
+    label: "EXPERIMENT",
+    dot: "bg-primary",
+  },
+  planned: {
+    label: "PLANNED",
+    dot: "border border-border bg-transparent rounded-full",
+  },
+};
 
 export default function StatusBadge({ status }: { status: ProjectStatus }) {
   const style = statusStyles[status];
   return (
-    <span
-      className={`inline-flex items-center font-mono text-[10px] font-medium tracking-[0.18em] px-2 py-0.5 border ${style.className}`}
-    >
+    <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold tracking-[0.18em] px-2 py-0.5 border border-border bg-surface text-foreground">
+      <span
+        className={`inline-block h-2 w-2 ${style.dot}`}
+        aria-hidden="true"
+      />
       {style.label}
     </span>
   );

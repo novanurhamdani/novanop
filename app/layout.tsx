@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Syne, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { site } from "../lib/site";
 import "./globals.css";
 import GoogleAnalytics from "./components/analytics/GoogleAnalytics";
@@ -7,10 +7,10 @@ import GamificationProvider from "./components/providers/GamificationProvider";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["700", "800"],
 });
 
 const spaceGrotesk = Space_Grotesk({
@@ -58,7 +58,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${montserrat.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased font-sans bg-background text-foreground`}
+        className={`${syne.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased font-sans bg-background text-foreground`}
       >
         <GamificationProvider>
           <Navbar />

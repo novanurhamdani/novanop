@@ -11,11 +11,29 @@ export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
 
-const statusStyles: Record<ProjectStatus, { label: string; color: string }> = {
-  live: { label: "LIVE", color: "#22c55e" },
-  building: { label: "BUILDING", color: "#fbbf24" },
-  experiment: { label: "EXPERIMENT", color: "#a855f7" },
-  planned: { label: "PLANNED", color: "#a293c9" },
+const statusStyles: Record<
+  ProjectStatus,
+  { label: string; color: string; bg: string; border: string }
+> = {
+  live: { label: "LIVE", color: "#0a0a0a", bg: "#ceff00", border: "#262626" },
+  building: {
+    label: "BUILDING",
+    color: "#ffffff",
+    bg: "#1a4bff",
+    border: "#0a0a0a",
+  },
+  experiment: {
+    label: "EXPERIMENT",
+    color: "#ffffff",
+    bg: "#1a4bff",
+    border: "#0a0a0a",
+  },
+  planned: {
+    label: "PLANNED",
+    color: "#0a0a0a",
+    bg: "#ffffff",
+    border: "#262626",
+  },
 };
 
 /** Per-project share card - title, category, status, stack. */
@@ -39,11 +57,11 @@ export default async function OpengraphImage({
         flexDirection: "column",
         justifyContent: "space-between",
         padding: 64,
-        background: "#0f051d",
+        background: "#0a0a0a",
         backgroundImage:
-          "linear-gradient(to right, rgba(162,147,201,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(162,147,201,0.07) 1px, transparent 1px)",
-        backgroundSize: "56px 56px",
-        color: "#e0d8f0",
+          "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+        backgroundSize: "32px 32px",
+        color: "#ffffff",
         fontFamily: "sans-serif",
       }}
     >
@@ -53,14 +71,15 @@ export default async function OpengraphImage({
           justifyContent: "space-between",
           fontSize: 20,
           letterSpacing: 6,
-          color: "#fbbf24",
+          color: "#1a4bff",
         }}
       >
         <span>NOVANOP</span>
         <span
           style={{
             color: status.color,
-            border: `2px solid ${status.color}`,
+            background: status.bg,
+            border: `2px solid ${status.border}`,
             padding: "4px 14px",
             letterSpacing: 4,
             fontSize: 18,
@@ -76,6 +95,7 @@ export default async function OpengraphImage({
             fontWeight: 800,
             lineHeight: 1.05,
             letterSpacing: -2,
+            textTransform: "uppercase",
           }}
         >
           {project.title}
@@ -84,7 +104,7 @@ export default async function OpengraphImage({
           style={{
             marginTop: 16,
             fontSize: 30,
-            color: "#a855f7",
+            color: "#1a4bff",
             fontWeight: 700,
           }}
         >
@@ -97,13 +117,11 @@ export default async function OpengraphImage({
           justifyContent: "space-between",
           fontSize: 20,
           letterSpacing: 2,
-          color: "#a293c9",
+          color: "#a3a3a3",
         }}
       >
         <span>{project.stack.join(" · ")}</span>
-        <span>
-          {site.name} · novanop.com
-        </span>
+        <span>{site.name} · novanop.com</span>
       </div>
     </div>,
     size,
