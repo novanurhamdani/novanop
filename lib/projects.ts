@@ -159,6 +159,26 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "loomoda-ui",
+    title: "Loomoda UI",
+    category: "Design System",
+    description:
+      "A Storybook-powered component library for Loomoda, covering reusable primitives, forms, data display, navigation, and design tokens.",
+    status: "live",
+    role: ["Frontend", "Component Architecture"],
+    stack: ["React", "TypeScript", "Storybook", "Tailwind CSS"],
+    featured: false,
+    demoUrl: "https://ui.loomoda.com",
+    thumbnail: "/projects/loomoda-ui.png",
+    profile: {
+      built: [
+        "Storybook-driven component documentation and navigation",
+        "Design-token palette covering brand, primary, and neutral color scales",
+        "Reusable interface primitives for forms, inputs, feedback, navigation, and data display",
+      ],
+    },
+  },
+  {
     slug: "repicode",
     title: "Repicode",
     category: "Product Platform",
@@ -513,12 +533,7 @@ export const getProject = (slug: string) =>
   projects.find((p) => p.slug === slug);
 
 /** Homepage Selected Work: current flagship builds plus shipped products. */
-const homeProjectSlugs = [
-  "loomoda",
-  "repicode",
-  "cuetoba",
-  "starter-crowd-chain",
-];
-export const selectedWork = projects.filter((project) =>
-  homeProjectSlugs.includes(project.slug),
-);
+const homeProjectSlugs = ["loomoda", "repicode", "cuetoba", "loomoda-ui"];
+export const selectedWork = homeProjectSlugs
+  .map((slug) => getProject(slug))
+  .filter((project) => project !== undefined);

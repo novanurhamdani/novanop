@@ -196,10 +196,11 @@ export default async function ProjectPage({
                   src={project.thumbnail}
                   alt={`${project.title} screenshot`}
                   domain={
-                    project.demoUrl ? new URL(project.demoUrl).host : project.slug
+                    project.demoUrl
+                      ? new URL(project.demoUrl).host
+                      : project.slug
                   }
-                  className="aspect-auto min-h-72 shadow-brutal sm:min-h-80"
-                  windowClassName="min-h-full"
+                  className="shadow-brutal"
                 >
                   <ZoomableImage
                     src={project.thumbnail}
