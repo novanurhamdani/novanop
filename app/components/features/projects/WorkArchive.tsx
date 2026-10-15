@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import type { ProjectStatus } from "../../../../types";
 import ProjectVisual from "./ProjectVisual";
+import ScreenshotFrame from "./ScreenshotFrame";
 import StatusBadge from "./StatusBadge";
 
 export interface WorkArchiveProject {
@@ -16,6 +16,7 @@ export interface WorkArchiveProject {
   role: string[];
   stack: string[];
   thumbnail?: string;
+  domain?: string;
   hasCaseStudy: boolean;
 }
 
@@ -53,16 +54,17 @@ const ArchiveCard = ({
       }`}
     >
       {project.thumbnail ? (
-        <Image
+        <ScreenshotFrame
           src={project.thumbnail}
           alt={`${project.title} screenshot`}
-          fill
+          domain={project.domain}
+          className="h-full min-h-full aspect-auto border-b-0"
+          windowClassName="transition-transform duration-300 group-hover:scale-[1.02]"
           sizes={
             viewMode === "list"
               ? "(max-width: 768px) 100vw, 38vw"
               : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           }
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         />
       ) : (
         <ProjectVisual slug={project.slug} title={project.title} />

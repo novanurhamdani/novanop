@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { selectedWork } from "../../../../lib/projects";
 import SectionHeading from "../../layout/SectionHeading";
 import ProjectVisual from "../projects/ProjectVisual";
+import ScreenshotFrame from "../projects/ScreenshotFrame";
 import StatusBadge from "../projects/StatusBadge";
 
 export default function SelectedWork() {
@@ -89,12 +89,12 @@ export default function SelectedWork() {
               className="relative flex min-h-56 items-center justify-center overflow-hidden bg-white p-4 md:col-span-4"
             >
               {spotlight.thumbnail ? (
-                <Image
+                <ScreenshotFrame
                   src={spotlight.thumbnail}
-                  alt=""
-                  fill
+                  alt={`${spotlight.title} product screenshot`}
+                  domain={spotlight.demoUrl ? new URL(spotlight.demoUrl).host : spotlight.slug}
+                  className="h-full min-h-full aspect-auto border-b-0"
                   sizes="(max-width: 768px) 100vw, 34vw"
-                  className="object-cover"
                 />
               ) : (
                 <ProjectVisual slug={spotlight.slug} title={spotlight.title} />
@@ -116,15 +116,13 @@ export default function SelectedWork() {
             >
               <div className="relative w-full overflow-hidden border-b border-border">
                 {project.thumbnail ? (
-                  <div className="relative aspect-[16/9]">
-                    <Image
-                      src={project.thumbnail}
-                      alt={`${project.title} product screenshot`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                    />
-                  </div>
+                  <ScreenshotFrame
+                    src={project.thumbnail}
+                    alt={`${project.title} product screenshot`}
+                    domain={project.demoUrl ? new URL(project.demoUrl).host : project.slug}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    windowClassName="transition-transform duration-300 group-hover:scale-[1.03]"
+                  />
                 ) : (
                   <ProjectVisual slug={project.slug} title={project.title} />
                 )}

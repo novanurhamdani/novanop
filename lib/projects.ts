@@ -168,6 +168,7 @@ export const projects: Project[] = [
     role: ["Product Engineering", "Frontend", "Backend"],
     stack: ["Next.js", "TypeScript", "Go", "PostgreSQL"],
     featured: true,
+    thumbnail: "/projects/repicode.png",
     caseStudy: {
       problem: [
         "Client-facing business applications are mostly the same product wearing different clothes. A booking app for a travel agency, a patient system for a dental clinic, and a course platform for an educator share the same skeleton: accounts, tenants, admin tooling, domain records, operational views.",
@@ -511,7 +512,13 @@ export const featuredProjects = projects.filter((p) => p.featured);
 export const getProject = (slug: string) =>
   projects.find((p) => p.slug === slug);
 
-/** Homepage Selected Work: flagship builds + honestly-labelled planned work. */
-export const selectedWork = projects.filter(
-  (p) => p.featured || p.status === "planned",
+/** Homepage Selected Work: current flagship builds plus shipped products. */
+const homeProjectSlugs = [
+  "loomoda",
+  "repicode",
+  "cuetoba",
+  "starter-crowd-chain",
+];
+export const selectedWork = projects.filter((project) =>
+  homeProjectSlugs.includes(project.slug),
 );

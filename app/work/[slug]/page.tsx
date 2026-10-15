@@ -7,6 +7,7 @@ import { labItems } from "../../../lib/lab";
 import StatusBadge from "../../components/features/projects/StatusBadge";
 import ProjectVisual from "../../components/features/projects/ProjectVisual";
 import ZoomableImage from "../../components/features/projects/ZoomableImage";
+import ScreenshotFrame from "../../components/features/projects/ScreenshotFrame";
 import ChallengeCard from "../../components/features/case-study/ChallengeCard";
 import CaseSection from "../../components/features/case-study/CaseSection";
 import ArchitectureDiagram from "../../components/features/case-study/ArchitectureDiagram";
@@ -191,14 +192,22 @@ export default async function ProjectPage({
           <div className="border-t-2 border-border bg-dark-surface grid-backdrop-dark p-4 sm:p-6 lg:border-l-2 lg:border-t-0">
             <div className="mx-auto w-full max-w-[34rem]">
               {project.thumbnail ? (
-                <div className="relative aspect-[16/9] overflow-hidden shadow-brutal">
+                <ScreenshotFrame
+                  src={project.thumbnail}
+                  alt={`${project.title} screenshot`}
+                  domain={
+                    project.demoUrl ? new URL(project.demoUrl).host : project.slug
+                  }
+                  className="aspect-auto min-h-72 shadow-brutal sm:min-h-80"
+                  windowClassName="min-h-full"
+                >
                   <ZoomableImage
                     src={project.thumbnail}
                     alt={`${project.title} screenshot`}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
-                </div>
+                </ScreenshotFrame>
               ) : (
                 <div className="border-2 border-primary shadow-brutal">
                   <ProjectVisual slug={project.slug} title={project.title} />
@@ -212,16 +221,23 @@ export default async function ProjectPage({
               {project.screenshots && (
                 <div className="mt-2 grid grid-cols-2 gap-2">
                   {project.screenshots.map((shot) => (
-                    <div
+                    <ScreenshotFrame
                       key={shot}
-                      className="relative aspect-[16/7] overflow-hidden border border-border"
+                      src={shot}
+                      alt={`${project.title} screenshot`}
+                      domain={
+                        project.demoUrl
+                          ? new URL(project.demoUrl).host
+                          : project.slug
+                      }
+                      className="aspect-[16/7] p-3 sm:p-5"
                     >
                       <ZoomableImage
                         src={shot}
                         alt={`${project.title} screenshot`}
                         sizes="(max-width: 1024px) 50vw, 25vw"
                       />
-                    </div>
+                    </ScreenshotFrame>
                   ))}
                 </div>
               )}

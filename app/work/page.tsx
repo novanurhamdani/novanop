@@ -27,6 +27,7 @@ const archiveProjects: WorkArchiveProject[] = projects.map((project) => ({
   role: project.role,
   stack: project.stack,
   thumbnail: project.thumbnail,
+  domain: project.demoUrl ? new URL(project.demoUrl).host : project.slug,
   hasCaseStudy: Boolean(project.caseStudy),
 }));
 

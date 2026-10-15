@@ -32,6 +32,7 @@ export default function About() {
                     src="/images/photo-new-2d.png"
                     alt="The Code Alchemist avatar"
                     fill
+                    unoptimized
                     className="border-2 border-black object-cover"
                   />
                 </div>
@@ -40,6 +41,7 @@ export default function About() {
                     src="/images/photo-new.png"
                     alt="Nova Nurhamdani"
                     fill
+                    unoptimized
                     className="border-2 border-black object-cover"
                   />
                 </div>

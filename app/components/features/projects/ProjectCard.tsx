@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Project } from "../../../../types";
 import StatusBadge from "./StatusBadge";
 import ProjectVisual from "./ProjectVisual";
+import ScreenshotFrame from "./ScreenshotFrame";
 
 interface ProjectCardProps {
   project: Project;
@@ -16,15 +16,12 @@ export default function ProjectCard({ project, featured }: ProjectCardProps) {
       className={`group flex h-full flex-col bg-card transition-all duration-150 hover:-translate-y-1 hover:border-secondary hover:shadow-brutal-lime focus-visible:-translate-y-1 focus-visible:border-secondary focus-visible:shadow-brutal-lime`}
     >
       {project.thumbnail ? (
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
-          <Image
-            src={project.thumbnail}
-            alt={`${project.title} screenshot`}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </div>
+        <ScreenshotFrame
+          src={project.thumbnail}
+          alt={`${project.title} screenshot`}
+          domain={project.demoUrl ? new URL(project.demoUrl).host : project.slug}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       ) : (
         <ProjectVisual slug={project.slug} title={project.title} />
       )}

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useGamificationContext } from "../../providers/GamificationProvider";
 import { site, socialLinks } from "../../../../lib/site";
 
-type FormStatus = "idle" | "sending" | "sent" | "error";
+type FormStatus = "idle" | "sending" | "sent" | "error" | "rate-limited";
 
 export default function Contact() {
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -24,8 +24,14 @@ export default function Contact() {
           name: formData.get("name"),
           email: formData.get("email"),
           message: formData.get("message"),
+          website: formData.get("website"),
         }),
       });
+
+      if (response.status === 429) {
+        setStatus("rate-limited");
+        return;
+      }
 
       if (response.ok) {
         setStatus("sent");
@@ -117,6 +123,17 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
+                <div
+                  className="pointer-events-none absolute left-[-10000px] top-auto h-px w-px overflow-hidden"
+                  aria-hidden="true"
+                >
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
                 <div className="mb-5">
                   <label
                     htmlFor="contact-name"
@@ -172,6 +189,15 @@ export default function Contact() {
                   >
                     The spell fizzled - something went wrong. Please try again
                     or use email directly.
+                  </p>
+                )}
+                {status === "rate-limited" && (
+                  <p
+                    className="mb-4 border border-secondary bg-secondary/10 px-3 py-2 text-sm text-secondary"
+                    role="status"
+                  >
+                    You&apos;ve sent several messages recently. Please wait a
+                    few minutes before trying again.
                   </p>
                 )}
 

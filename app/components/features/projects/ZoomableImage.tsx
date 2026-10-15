@@ -49,11 +49,13 @@ export default function ZoomableImage({
         onClick={() => setOpen(true)}
         aria-label={`Expand image - ${alt}`}
         className="group/zoom absolute inset-0 h-full w-full cursor-zoom-in"
+        aria-expanded={open}
       >
         <Image
           src={src}
           alt={alt}
           fill
+          unoptimized
           sizes={sizes}
           priority={priority}
           className="object-cover object-top"
@@ -91,6 +93,7 @@ export default function ZoomableImage({
                 src={src}
                 alt={alt}
                 fill
+                unoptimized
                 sizes="90vw"
                 className="object-contain"
               />
