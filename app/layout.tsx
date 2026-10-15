@@ -25,21 +25,54 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500", "600"],
 });
 
+const defaultDescription =
+  "Freelance web developer and frontend-heavy full-stack software engineer based in Indonesia. I build products, interfaces, and the systems behind them.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title:
-    "Nova Nurhamdani - Frontend-heavy Full-Stack Software Engineer | Novanop",
-  description:
-    "Nova Nurhamdani is a frontend-heavy full-stack software engineer building products, interfaces, and the systems behind them.",
+  title: {
+    default: "Nova Nurhamdani — Freelance Web Developer & Software Engineer",
+    template: "%s | Nova Nurhamdani",
+  },
+  description: defaultDescription,
+  keywords: [
+    "freelance web developer",
+    "web developer Indonesia",
+    "full-stack developer",
+    "frontend engineer",
+    "Next.js developer",
+    "React developer",
+    "TypeScript developer",
+    "Nova Nurhamdani",
+    "Novanop",
+  ],
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  applicationName: site.brand,
+  category: "technology",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: `Nova Nurhamdani - ${site.title}`,
-    description: site.tagline,
+    title: "Nova Nurhamdani — Freelance Web Developer & Software Engineer",
+    description: defaultDescription,
     type: "website",
     url: "/",
     siteName: "Novanop",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
+    title: "Nova Nurhamdani — Freelance Web Developer & Software Engineer",
+    description: defaultDescription,
   },
 };
 

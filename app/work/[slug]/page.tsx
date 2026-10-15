@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "../../../lib/projects";
+import { site } from "../../../lib/site";
 import { Project } from "../../../types";
 import { labItems } from "../../../lib/lab";
 import StatusBadge from "../../components/features/projects/StatusBadge";
@@ -32,12 +33,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  const title = `${project.title} - ${project.category} | Nova Nurhamdani`;
+  const title = `${project.title} — ${project.category}`;
   const description = `${project.description}${statusSuffix[project.status]}`;
   const url = `/work/${project.slug}`;
   return {
     title,
     description,
+    keywords: [project.title, project.category, ...project.stack],
     alternates: { canonical: url },
     openGraph: {
       title,
@@ -84,8 +86,33 @@ export default async function ProjectPage({
   const cs = project.caseStudy;
   const labItem = labItems.find((l) => l.slug === project.slug);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Work",
+        item: `${site.url}/work`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: project.title,
+        item: `${site.url}/work/${project.slug}`,
+      },
+    ],
+  };
+
   return (
     <main className="pt-24 pb-0 sm:pt-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Link
           href="/work"

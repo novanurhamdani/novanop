@@ -6,15 +6,17 @@ import { experience } from "../../lib/experience";
 import { journey } from "../../lib/journey";
 import { site } from "../../lib/site";
 
+const aboutTitle = "About Nova Nurhamdani";
+const aboutDescription =
+  "Nova Nurhamdani — software engineer in Indonesia building products, interfaces, and backend systems with React, Next.js, TypeScript, and Go.";
+
 export const metadata: Metadata = {
-  title: "About Nova Nurhamdani | Software Engineer",
-  description:
-    "About Nova Nurhamdani, a software engineer focused on frontend, product engineering, backend systems, and building software.",
+  title: aboutTitle,
+  description: aboutDescription,
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Nova Nurhamdani | Software Engineer",
-    description:
-      "About Nova Nurhamdani, a software engineer focused on frontend, product engineering, and backend systems.",
+    title: aboutTitle,
+    description: aboutDescription,
     type: "website",
     url: "/about",
   },

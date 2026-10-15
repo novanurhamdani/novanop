@@ -13,14 +13,38 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-/** Minimal Person schema - identity only, no fabricated claims. */
-const personSchema = {
+/** Person + WebSite schema - identity only, no fabricated claims. */
+const homeSchema = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: site.name,
-  url: site.url,
-  jobTitle: site.title,
-  sameAs: [site.linkedin, site.github],
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: site.name,
+      url: site.url,
+      image: `${site.url}/images/photo-new.png`,
+      jobTitle: "Freelance Web Developer & Software Engineer",
+      description:
+        "Frontend-heavy full-stack software engineer building products, interfaces, and the systems behind them.",
+      knowsAbout: [
+        "Web Development",
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Go",
+        "PostgreSQL",
+        "Product Engineering",
+      ],
+      address: { "@type": "PostalAddress", addressCountry: "ID" },
+      sameAs: [site.linkedin, site.github],
+    },
+    {
+      "@type": "WebSite",
+      name: site.brand,
+      url: site.url,
+      author: { "@id": `${site.url}/#person` },
+    },
+  ],
 };
 
 export default function Home() {
@@ -29,7 +53,7 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(personSchema).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(homeSchema).replace(/</g, "\\u003c"),
         }}
       />
       <Hero />

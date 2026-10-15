@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import ResumeView from "../components/features/resume/ResumeView";
 
+const resumeTitle = "Resume";
+const resumeDescription =
+  "Resume of Nova Nurhamdani — freelance web developer and frontend-heavy full-stack engineer. React, Next.js, TypeScript, Go, PostgreSQL.";
+
 export const metadata: Metadata = {
-  title: "Nova Nurhamdani - Resume | Software Engineer",
-  description:
-    "Resume of Nova Nurhamdani, a frontend-heavy full-stack software engineer building products, interfaces, and the systems behind them.",
+  title: resumeTitle,
+  description: resumeDescription,
   alternates: { canonical: "/resume" },
   openGraph: {
-    title: "Nova Nurhamdani - Resume | Software Engineer",
-    description:
-      "Resume of Nova Nurhamdani, a frontend-heavy full-stack software engineer.",
+    title: resumeTitle,
+    description: resumeDescription,
     type: "website",
     url: "/resume",
   },
